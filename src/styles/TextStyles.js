@@ -37,14 +37,12 @@ export const H5 = styled.h5`
     font-weight: 500;
     font-size: 1.125rem;
     line-height: 1.25rem;
-    color: ${(props) => props.color};
 `
 export const H6 = styled.h6`
     font-family: 'Lexend', 'Noto Sans Thai', sans-serif;
     font-weight: 700;
     font-size: 1rem;
     line-height: 1.25rem;
-    color: ${(props) => props.color};
 `
 
 export const Body = styled.p`
@@ -52,22 +50,19 @@ export const Body = styled.p`
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.5rem;
-    color: ${(props) => props.color};
 `
-export const ButtonText = styled.p`
+export const ButtonText = styled.span`
     font-family: 'Lexend', 'Noto Sans Thai', sans-serif;
     font-weight: 500;
     font-size: 0.875rem;
     line-height: 1rem;
     text-transform: uppercase;
-    color: ${(props) => props.color};
 `
 export const Caption = styled.p`
     font-family: 'Bai Jamjuree', sans-serif;
     font-weight: 500;
     font-size: 0.875rem;
     line-height: 1rem;
-    color: ${(props) => props.color};
 `
 
 export const Overline = styled.p`
@@ -76,5 +71,4 @@ export const Overline = styled.p`
     font-size: 0.875rem;
     line-height: 1rem;
     text-transform: uppercase;
-    color: ${(props) => props.color};
 `
