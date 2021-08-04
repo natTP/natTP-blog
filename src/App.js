@@ -9,6 +9,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 
 import { AppContainer } from 'components/AppContainer'
 import { Button } from 'components/Button'
+import { NavBar } from 'components/NavBar'
 
 library.add(faFacebookF, faYoutube, faInstagram, faGithub, fas)
 
@@ -17,6 +18,7 @@ function App() {
         <Theme>
             <AppContainer>
                 <GlobalStyles />
+                <NavBar />
                 <div class="example">
                     <Button variant="filled">เลือก Fighter ของคุณ</Button>
                     <Button variant="white" icon="chevron-left">
