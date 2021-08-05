@@ -6,6 +6,10 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0px;
     }
 
+    .content-wrap {
+        padding-bottom: 200px;
+    }
+
     .example {
         padding: 1rem;
         display: flex;

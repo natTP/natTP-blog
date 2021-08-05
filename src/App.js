@@ -10,6 +10,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { AppContainer } from 'components/AppContainer'
 import { Button } from 'components/Button'
 import { NavBar } from 'components/NavBar'
+import { Footer } from 'components/Footer'
 
 library.add(faFacebookF, faYoutube, faInstagram, faGithub, fas)
 
@@ -27,7 +28,43 @@ function App() {
                     <Button variant="outlined" icon={['fab', 'github']}>
                         ปุ่มมีเส้นขอบจ้า
                     </Button>
+                    <Button variant="filled">เลือก Fighter ของคุณ</Button>
+                    <Button variant="white" icon="chevron-left">
+                        Back
+                    </Button>
+                    <Button variant="outlined" icon={['fab', 'github']}>
+                        ปุ่มมีเส้นขอบจ้า
+                    </Button>
+                    <Button variant="filled">เลือก Fighter ของคุณ</Button>
+                    <Button variant="white" icon="chevron-left">
+                        Back
+                    </Button>
+                    <Button variant="outlined" icon={['fab', 'github']}>
+                        ปุ่มมีเส้นขอบจ้า
+                    </Button>
+                    <Button variant="filled">เลือก Fighter ของคุณ</Button>
+                    <Button variant="white" icon="chevron-left">
+                        Back
+                    </Button>
+                    <Button variant="outlined" icon={['fab', 'github']}>
+                        ปุ่มมีเส้นขอบจ้า
+                    </Button>
+                    <Button variant="filled">เลือก Fighter ของคุณ</Button>
+                    <Button variant="white" icon="chevron-left">
+                        Back
+                    </Button>
+                    <Button variant="outlined" icon={['fab', 'github']}>
+                        ปุ่มมีเส้นขอบจ้า
+                    </Button>
+                    <Button variant="filled">เลือก Fighter ของคุณ</Button>
+                    <Button variant="white" icon="chevron-left">
+                        Back
+                    </Button>
+                    <Button variant="outlined" icon={['fab', 'github']}>
+                        ปุ่มมีเส้นขอบจ้า
+                    </Button>
                 </div>
+                <Footer />
             </AppContainer>
         </Theme>
     )
