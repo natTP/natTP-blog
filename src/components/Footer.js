@@ -1,8 +1,8 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import styled from 'styled-components/macro'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Logo } from './Logo'
-import { ReactComponent as Wave } from 'assets/wave1.svg'
+import { ReactComponent as Wave } from 'assets/waveLR.svg'
 
 const SocialLink = styled.a`
     margin: 0.75rem;
@@ -61,6 +61,7 @@ export function Footer({ className }) {
                 </SocialLinks>
             </Content>
             <Wave
+                preserveAspectRatio="none"
                 css={`
                     width: 100vw;
                 `}

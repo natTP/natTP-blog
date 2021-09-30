@@ -49,20 +49,6 @@ function App() {
                     <Button variant="outlined" icon={['fab', 'github']}>
                         ปุ่มมีเส้นขอบจ้า
                     </Button>
-                    <Button variant="filled">เลือก Fighter ของคุณ</Button>
-                    <Button variant="white" icon="chevron-left">
-                        Back
-                    </Button>
-                    <Button variant="outlined" icon={['fab', 'github']}>
-                        ปุ่มมีเส้นขอบจ้า
-                    </Button>
-                    <Button variant="filled">เลือก Fighter ของคุณ</Button>
-                    <Button variant="white" icon="chevron-left">
-                        Back
-                    </Button>
-                    <Button variant="outlined" icon={['fab', 'github']}>
-                        ปุ่มมีเส้นขอบจ้า
-                    </Button>
                 </div>
                 <Footer />
             </AppContainer>
