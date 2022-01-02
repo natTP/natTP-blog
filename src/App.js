@@ -15,6 +15,10 @@ import { Body, H1 } from 'styles/TextStyles'
 
 library.add(faFacebookF, faYoutube, faInstagram, faGithub, fas)
 
+// https://medium.com/@satyambansal001/transform-create-react-app-to-gatsby-3ba4546f66d3
+// https://www.gatsbyjs.com/docs/porting-from-create-react-app-to-gatsby/
+// https://www.gatsbyjs.com/docs/how-to/styling/styled-components/
+
 function App() {
     return (
         <Theme>
