@@ -35,6 +35,7 @@ const StyledFooter = styled.footer`
     position: absolute;
     bottom: 0;
     width: 100%;
+    height: 200px;
 `
 
 export function Footer({ className }) {
@@ -64,6 +65,8 @@ export function Footer({ className }) {
                 preserveAspectRatio="none"
                 css={`
                     width: 100vw;
+                    height: 100%;
+                    display: block;
                 `}
             />
         </StyledFooter>
