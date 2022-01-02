@@ -11,6 +11,7 @@ import { AppContainer } from 'components/AppContainer'
 import { Button } from 'components/Button'
 import { NavBar } from 'components/NavBar'
 import { Footer } from 'components/Footer'
+import { Body, H1 } from 'styles/TextStyles'
 
 library.add(faFacebookF, faYoutube, faInstagram, faGithub, fas)
 
@@ -19,29 +20,11 @@ function App() {
         <Theme>
             <AppContainer>
                 <GlobalStyles />
+                <GlobalFonts />
                 <NavBar />
                 <div class="example">
-                    <Button variant="filled">เลือก Fighter ของคุณ</Button>
-                    <Button variant="white" icon="chevron-left">
-                        Back
-                    </Button>
-                    <Button variant="outlined" icon={['fab', 'github']}>
-                        ปุ่มมีเส้นขอบจ้า
-                    </Button>
-                    <Button variant="filled">เลือก Fighter ของคุณ</Button>
-                    <Button variant="white" icon="chevron-left">
-                        Back
-                    </Button>
-                    <Button variant="outlined" icon={['fab', 'github']}>
-                        ปุ่มมีเส้นขอบจ้า
-                    </Button>
-                    <Button variant="filled">เลือก Fighter ของคุณ</Button>
-                    <Button variant="white" icon="chevron-left">
-                        Back
-                    </Button>
-                    <Button variant="outlined" icon={['fab', 'github']}>
-                        ปุ่มมีเส้นขอบจ้า
-                    </Button>
+                    <H1>ตัวอย่าง Example</H1>
+                    <Body>เลือก Fighter ของคุณได้เลย</Body>
                     <Button variant="filled">เลือก Fighter ของคุณ</Button>
                     <Button variant="white" icon="chevron-left">
                         Back
