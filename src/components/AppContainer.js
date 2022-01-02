@@ -37,9 +37,9 @@ export function AppContainer({ className, children }) {
     return (
         <StyledAppContainer className="className">
             {children}
-            <StyledWave1 />
+            {/* <StyledWave1 />
             <StyledWave2 />
-            <StyledWave3 />
+            <StyledWave3 /> */}
         </StyledAppContainer>
     )
 }
