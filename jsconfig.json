@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "noEmit": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "gatsby-config.js",
+    "gatsby-browser.js",
+    "gatsby-ssr.js",
+    "gatsby-node.js"
+  ],
   "exclude": ["node_modules", "build"]
 }

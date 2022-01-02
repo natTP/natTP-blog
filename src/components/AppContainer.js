@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ReactComponent as WaveLR } from 'assets/waveLR.svg'
-import { ReactComponent as WaveRL } from 'assets/waveRL.svg'
+import WaveLR from 'assets/waveLR.svg'
+import WaveRL from 'assets/waveRL.svg'
 
 const StyledWave1 = styled(WaveRL)`
     width: 100vw;
@@ -35,7 +35,7 @@ const StyledAppContainer = styled.div`
 `
 export function AppContainer({ className, children }) {
     return (
-        <StyledAppContainer className="className">
+        <StyledAppContainer className={className}>
             {children}
             {/* <StyledWave1 />
             <StyledWave2 />
