@@ -51,13 +51,13 @@ export function Footer({ className }) {
                 />
                 <SocialLinks>
                     <SocialLink href="https://www.facebook.com/765pro.no.natTP" target="_blank">
-                        <FontAwesomeIcon icon={['fab', 'facebook-f']} size="lg" />
+                        <FontAwesomeIcon icon={['fab', 'facebook-f']} size="lg" title="link to facebook" />
                     </SocialLink>
                     <SocialLink href="https://www.instagram.com/art.at.natty.p" target="_blank">
-                        <FontAwesomeIcon icon={['fab', 'instagram']} size="lg" />
+                        <FontAwesomeIcon icon={['fab', 'instagram']} size="lg" title="link to instagram" />
                     </SocialLink>
                     <SocialLink href="https://github.com/natTP/natTP-blog" target="_blank">
-                        <FontAwesomeIcon icon={['fab', 'github']} size="lg" />
+                        <FontAwesomeIcon icon={['fab', 'github']} size="lg" title="link to github" />
                     </SocialLink>
                 </SocialLinks>
             </Content>
