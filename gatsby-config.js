@@ -6,7 +6,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Lexend\:500,500i,700,700i`, `Bai Jamjuree\:400,400i,600,600i`],
+        fonts: [
+          `Lexend\:300,500,500i,600,700,700i`,
+          `Bai Jamjuree\:400,400i,600,600i`,
+        ],
         display: "swap",
       },
     },
