@@ -48,6 +48,7 @@ export function Footer({ className }) {
                         font-size: 1.5rem;
                         align-self: center;
                     `}
+                    href="/"
                 />
                 <SocialLinks>
                     <SocialLink href="https://www.facebook.com/765pro.no.natTP" target="_blank">

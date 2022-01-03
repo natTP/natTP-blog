@@ -3,8 +3,9 @@ import styled from 'styled-components/macro'
 import breakpoints from 'styles/Breakpoints'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Logo } from './Logo'
+import { Link } from 'gatsby'
 
-const MenuItem = styled.a`
+const MenuItem = styled(Link)`
     padding-left: 1rem;
     text-decoration: none;
 
@@ -72,7 +73,6 @@ export function NavBar({ className }) {
             />
             <FontAwesomeIcon
                 icon="bars"
-                size="lg"
                 onClick={() => setIsOpen(!isOpen)}
                 css={`
                     cursor: pointer;

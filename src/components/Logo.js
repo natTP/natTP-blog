@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { Link } from 'gatsby'
 
 const variantStyles = (variant = 'dark') =>
     ({
@@ -11,7 +12,7 @@ const variantStyles = (variant = 'dark') =>
         `,
     }[variant])
 
-const StyledLogo = styled.a`
+const StyledLogo = styled(Link)`
     padding: 1rem;
     text-decoration: none;
     font-family: 'Lexend', sans-serif;
@@ -26,7 +27,7 @@ const StyledLogo = styled.a`
 
 export function Logo({ className, variant, href }) {
     return (
-        <StyledLogo className={className} variant={variant} href={href}>
+        <StyledLogo className={className} variant={variant} to={href}>
             nat<span>TP</span>
         </StyledLogo>
     )
