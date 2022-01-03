@@ -21,7 +21,11 @@ function Home() {
             <NavBar />
             <div class="example">
                 <H1>ตัวอย่าง Example</H1>
-                <Body>เลือก Fighter ของคุณได้เลย</Body>
+                <Body>
+                    เลือก Fighter ของ
+                    <i>คุณ</i>
+                    ได้เลย
+                </Body>
                 <Button variant="filled">เลือก Fighter ของคุณ</Button>
                 <Button variant="white" icon="chevron-left">
                     Back
