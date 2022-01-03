@@ -1,6 +1,10 @@
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
 
-const theme = {
+import GlobalFonts from 'fonts/Fonts'
+import { GlobalStyles } from 'styles/GlobalStyles'
+
+export const theme = {
     colors: {
         amethyst: {
             veryLight: '#EFE9FB',
@@ -30,6 +34,12 @@ const theme = {
     },
 }
 
-const Theme = ({ children }) => <ThemeProvider theme={theme}> {children} </ThemeProvider>
-
-export default Theme
+export const Theme = ({ element }) => {
+    return (
+        <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <GlobalFonts />
+            {element}
+        </ThemeProvider>
+    )
+}

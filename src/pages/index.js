@@ -1,7 +1,4 @@
-import Theme from 'styles/Theme'
-
-import GlobalFonts from 'fonts/Fonts'
-import { GlobalStyles } from 'styles/GlobalStyles'
+import React from 'react'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFacebookF, faYoutube, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons'
@@ -15,15 +12,12 @@ import { Body, H1 } from 'styles/TextStyles'
 
 library.add(faFacebookF, faYoutube, faInstagram, faGithub, fas)
 
-// TODO : Move global styles to layout component later
+// TODO : Move appcontainer to layout component
 // TODO : customize todo-tree colors
-// FIXME : gatsby develop renders blank page
 
 function Home() {
     return (
         <AppContainer>
-            <GlobalStyles />
-            <GlobalFonts />
             <NavBar />
             <div class="example">
                 <H1>ตัวอย่าง Example</H1>
