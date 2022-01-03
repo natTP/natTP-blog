@@ -32,6 +32,8 @@ const variantStyles = (variant = 'filled') =>
         `,
     }[variant])
 
+// TODO : Use Gatsby link in button
+
 const StyledButton = styled.button`
     padding: 0.75rem 0.5rem 0.75rem 1rem;
     margin: 0.5rem;
@@ -53,7 +55,7 @@ const StyledButton = styled.button`
 export function Button({ className, variant, icon, children }) {
     return (
         <StyledButton className={className} variant={variant}>
-            <FontAwesomeIcon icon={icon} />
+            {icon && <FontAwesomeIcon icon={icon} />}
             <ButtonText>{children}</ButtonText>
         </StyledButton>
     )
