@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Logo } from './Logo'
 
 const MenuItem = styled.a`
-    padding-left: 2rem;
+    padding-left: 1rem;
     text-decoration: none;
 
     font-family: 'Lexend', 'Noto Sans Thai', sans-serif;
@@ -35,7 +35,7 @@ const Menu = styled.div`
         flex-direction: column;
 
         width: 100%;
-        max-height: ${({ isOpen }) => (isOpen ? '100vh' : '0')};
+        max-height: ${({ isOpen }) => (isOpen ? '100vh' : '0px')};
         transition: max-height 0.3s ease-in;
     } ;
 `
@@ -44,7 +44,7 @@ const StyledNavBar = styled.header`
     padding: 0 15% 0 15%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     flex-wrap: wrap;
 
     position: sticky;
@@ -53,7 +53,8 @@ const StyledNavBar = styled.header`
     background: ${(props) => props.theme.colors.neutral[100]};
 
     @media (max-width: ${breakpoints.sm}) {
-        padding: 0 1rem 0 1rem;
+        align-items: center;
+        padding: 0 1rem 0 0;
     } ;
 `
 
@@ -63,7 +64,7 @@ export function NavBar({ className }) {
     return (
         <StyledNavBar className={className}>
             <Logo
-                href=""
+                href="/"
                 variant="dark"
                 css={`
                     font-size: 1.5rem;
@@ -71,6 +72,7 @@ export function NavBar({ className }) {
             />
             <FontAwesomeIcon
                 icon="bars"
+                size="lg"
                 onClick={() => setIsOpen(!isOpen)}
                 css={`
                     cursor: pointer;
