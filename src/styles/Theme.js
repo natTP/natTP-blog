@@ -1,7 +1,5 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-
-import GlobalFonts from 'fonts/Fonts'
 import { GlobalStyles } from 'styles/GlobalStyles'
 
 export const theme = {
@@ -27,7 +25,7 @@ export const theme = {
         },
         success: '#87DB53',
     },
-    fonts: ['sans-serif', 'Noto Sans Thai', 'Lexend', 'Bai Jamjuree'],
+    fonts: ['sans-serif', 'Noto Sans Thai', 'Lexend', 'Sarabun'],
     shadows: {
         default: '1px 1px 2px rgba(88, 83, 97, 0.25)',
         hover: ' 1px 4px 10px rgba(88, 83, 97, 0.25)',
@@ -38,7 +36,6 @@ export const Theme = ({ element }) => {
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyles />
-            <GlobalFonts />
             {element}
         </ThemeProvider>
     )
