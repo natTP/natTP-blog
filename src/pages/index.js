@@ -9,8 +9,6 @@ import { Body, H1 } from 'styles/TextStyles'
 
 library.add(faFacebookF, faYoutube, faInstagram, faGithub, fas)
 
-// TODO : customize todo-tree colors
-
 function Home() {
     return (
         <div className="example">

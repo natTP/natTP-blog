@@ -49,7 +49,7 @@ export const Body = styled.p`
     font-family: 'Bai Jamjuree', sans-serif;
     font-weight: 400;
     font-size: 1rem;
-    line-height: 1.5rem;
+    line-height: 1.75rem;
 `
 export const ButtonText = styled.span`
     font-family: 'Lexend', 'Noto Sans Thai', sans-serif;
