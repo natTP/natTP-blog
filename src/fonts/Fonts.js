@@ -6,6 +6,8 @@ import NotoSansThaiMediumWoff2 from 'fonts/NotoSansThai-Medium.woff2'
 import NotoSansThaiBoldWoff from 'fonts/NotoSansThai-Bold.woff'
 import NotoSansThaiBoldWoff2 from 'fonts/NotoSansThai-Bold.woff2'
 
+// TODO : Try to load FC Subject correctly
+
 export default createGlobalStyle`
 @font-face {
 font-family: 'Noto Sans Thai';
@@ -23,5 +25,4 @@ font-family: 'Noto Sans Thai';
     font-weight: 700;
     font-style: normal;
     font-display: swap;
-}
-`
+}`

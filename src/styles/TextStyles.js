@@ -46,8 +46,8 @@ export const H6 = styled.h6`
 `
 
 export const Body = styled.p`
-    font-family: 'Bai Jamjuree', sans-serif;
-    font-weight: 400;
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 300;
     font-size: 1rem;
     line-height: 1.75rem;
 `
@@ -59,8 +59,8 @@ export const ButtonText = styled.span`
     text-transform: uppercase;
 `
 export const Caption = styled.p`
-    font-family: 'Bai Jamjuree', sans-serif;
-    font-weight: 500;
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 300;
     font-size: 0.875rem;
     line-height: 1rem;
 `

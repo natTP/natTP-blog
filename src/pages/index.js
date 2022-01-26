@@ -16,7 +16,7 @@ function Home() {
             <Body>
                 เลือก Fighter ของ
                 <i>คุณ</i>
-                ได้เลย
+                ได้เลย <strong>ส่วนอันนี้คือตัวหนา</strong>
             </Body>
             <Button variant="filled">เลือก Fighter ของคุณ</Button>
             <Button variant="white" icon="chevron-left">

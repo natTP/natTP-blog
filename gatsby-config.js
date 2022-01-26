@@ -8,7 +8,7 @@ module.exports = {
       options: {
         fonts: [
           `Lexend\:300,500,500i,600,700,700i`,
-          `Bai Jamjuree\:400,400i,600,600i`,
+          `Sarabun\:300,300i,700,700i`,
         ],
         display: "swap",
       },
