@@ -1,8 +1,7 @@
 import React from "react";
 import { AppContainer } from "components/AppContainer.js";
-import { Theme } from "./src/styles/Theme.js";
+import "./src/styles/global.css";
 
-export const wrapRootElement = Theme;
 export const wrapPageElement = ({ element }) => {
   return <AppContainer>{element}</AppContainer>;
 };
