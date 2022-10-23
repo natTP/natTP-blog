@@ -7,11 +7,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(faFacebookF, faYoutube, faInstagram, faGithub, fas)
 
 function Home() {
-    return (
-        <div className='font-loopless font-bold text-4xl text-blue-600'>
-            Character Voice คืออะไร วิธีใช้ยกระดับสำนวนการเขียนให้ฟังดูมีชีวิต!
-        </div>
-    )
+    return <h1 className='text-gradient h-96'>Character Voice คืออะไร วิธีใช้ยกระดับสำนวนการเขียนให้ฟังดูมีชีวิต!</h1>
 }
 
 export default Home
