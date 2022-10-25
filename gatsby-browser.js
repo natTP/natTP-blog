@@ -1,5 +1,5 @@
 import React from "react";
-import { AppContainer } from "components/AppContainer.js";
+import AppContainer from "components/common/AppContainer.js";
 import "./src/styles/global.css";
 
 export const wrapPageElement = ({ element }) => {
