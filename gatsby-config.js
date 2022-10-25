@@ -4,7 +4,14 @@ require("dotenv").config({
 
 module.exports = {
   plugins: [
-    `gatsby-plugin-react-svg`,
+    {
+      resolve: `gatsby-plugin-react-svg`,
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-image`,
