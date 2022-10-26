@@ -43,14 +43,16 @@ function Navbar() {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
             />
             <nav
-                className={`${isMenuOpen ? 'h-screen' : 'h-0'} w-full overflow-hidden md:block md:h-auto md:w-auto
+                className={`${
+                    isMenuOpen ? 'h-screen' : 'h-0'
+                } w-full overflow-hidden  md:block md:h-auto md:w-auto md:overflow-visible
                 transition-[height] ease-in-out duration-700`}
             >
                 <ul className='flex flex-col py-4 gap-4 md:flex-row md:py-0 md:gap-8'>
                     {menuItems.map((item) => (
                         <li key={item.id}>
                             {item.label === 'บทความ' ? (
-                                <div>
+                                <div className='relative'>
                                     <button
                                         className='font-medium text-neutral-500 underline-gradient focus:text-neutral-700'
                                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -58,7 +60,7 @@ function Navbar() {
                                         <span className='font-loopless mr-2'>{item.label}</span>
                                         <FontAwesomeIcon icon={`chevron-${isDropdownOpen ? 'up' : 'down'}`} size='xs' />
                                     </button>
-                                    {isDropdownOpen && <DropdownMenu />}
+                                    {isDropdownOpen && <DropdownMenu className='md:absolute md:top-8' />}
                                 </div>
                             ) : (
                                 <Link
