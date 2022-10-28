@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Logo from 'assets/logo/logo-on-light.svg'
+import Logo from 'assets/logo/logo-official-color.svg'
 import Socials from './Socials'
 import DropdownMenu from './DropdownMenu'
 
