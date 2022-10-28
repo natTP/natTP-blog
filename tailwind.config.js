@@ -49,6 +49,16 @@ module.exports = {
         h6: ["1rem", "1.5rem"],
         body: ["1rem", "1.8125rem"],
       },
+      animation: {
+        "wave-front": "wave 4s cubic-bezier(.37,.44,.64,.54) infinite",
+        "wave-back": "wave 6s cubic-bezier(.37,.44,.64,.54) infinite",
+      },
+      keyframes: {
+        wave: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
     },
   },
   plugins: [],

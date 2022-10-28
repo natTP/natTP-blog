@@ -1,11 +1,13 @@
 import React from 'react'
+import Footer from './Footer'
 import Navbar from './Navbar'
 
 function AppContainer({ className, children }) {
     return (
-        <div>
+        <div className={`w-screen min-h-screen relative bg-white ${className}`}>
             <Navbar />
-            {children}
+            <div className='pb-[220px]'>{children}</div>
+            <Footer />
         </div>
     )
 }
