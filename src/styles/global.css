@@ -5,6 +5,10 @@
 @import 'fonts.css';
 
 @layer base {
+    body {
+        @apply m-0 p-0 max-w-full overflow-x-hidden;
+    }
+
     h1 {
         @apply font-loopless font-bold text-h1-mobile md:text-h1;
     }
