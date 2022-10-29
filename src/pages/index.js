@@ -1,12 +1,5 @@
 import React from 'react'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faFacebookF, faTwitter, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faBars, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-
-library.add(faFacebookF, faTwitter, faInstagram, faGithub, faBars, faChevronDown, faChevronUp, far)
-
 function Home() {
     return (
         <div>

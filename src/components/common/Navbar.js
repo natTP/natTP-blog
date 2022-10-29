@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars, faMinus } from '@fortawesome/free-solid-svg-icons'
 import Logo from 'assets/logo/logo-official-color.svg'
 import Socials from './Socials'
 import DropdownMenu from './DropdownMenu'
@@ -38,7 +39,7 @@ function Navbar() {
                 <span className='font-decorative text-neutral-300'>Blog</span>
             </Link>
             <FontAwesomeIcon
-                icon='bars'
+                icon={isMenuOpen ? faMinus : faBars}
                 className='block md:hidden text-neutral-500 cursor-pointer hover:text-neutral-700'
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
             />

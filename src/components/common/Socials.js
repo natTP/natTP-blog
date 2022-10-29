@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookF, faTwitter, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons'
 import React from 'react'
 
 function Socials({ className, iconSize = '1x', gap = 4 }) {
@@ -8,28 +9,28 @@ function Socials({ className, iconSize = '1x', gap = 4 }) {
             socialName: 'facebook',
             href: 'https://www.facebook.com/natTP.page',
             username: 'natTP.page',
-            icon: ['fab', 'facebook-f'],
+            icon: faFacebookF,
         },
         {
             id: 2,
             socialName: 'twitter',
             href: 'https://twitter.com/natTPpage',
             username: '@natTPpage',
-            icon: ['fab', 'twitter'],
+            icon: faTwitter,
         },
         {
             id: 3,
             socialName: 'instagram',
             href: 'https://www.instagram.com/art.at.natty.p',
             username: 'art.at.natty.p',
-            icon: ['fab', 'instagram'],
+            icon: faInstagram,
         },
         {
             id: 4,
             socialName: 'github',
             href: 'https://github.com/natTP',
             username: 'natTP',
-            icon: ['fab', 'github'],
+            icon: faGithub,
         },
     ]
 
