@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faMinus } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faMinus, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import Logo from 'assets/logo/logo-official-color.svg'
 import Socials from './Socials'
 import DropdownMenu from './DropdownMenu'
@@ -30,7 +30,7 @@ function Navbar() {
 
     return (
         <header
-            className='px-4 md:px-[72px] py-2 bg-neutral-100 
+            className='px-5 md:px-[72px] py-2 bg-neutral-100 
             flex flex-row justify-between items-center flex-wrap
             sticky top-0'
         >
@@ -59,7 +59,10 @@ function Navbar() {
                                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                     >
                                         <span className='font-loopless mr-2'>{item.label}</span>
-                                        <FontAwesomeIcon icon={`chevron-${isDropdownOpen ? 'up' : 'down'}`} size='xs' />
+                                        <FontAwesomeIcon
+                                            icon={isDropdownOpen ? faChevronUp : faChevronDown}
+                                            size='xs'
+                                        />
                                     </button>
                                     {isDropdownOpen && <DropdownMenu className='md:absolute md:top-8' />}
                                 </div>
