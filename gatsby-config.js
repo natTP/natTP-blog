@@ -38,9 +38,10 @@ module.exports = {
                 process.env.GATSBY_IS_PREVIEW === "true" ? "preview" : "live",
               populate: {
                 cover: "*",
-                blocks: {
-                  populate: "*",
-                },
+                column: "*",
+                tag: "*",
+                blocks: "*",
+                author: "*",
               },
             },
           },
@@ -49,31 +50,48 @@ module.exports = {
           },
           {
             singularName: "column",
-          },
-        ],
-        singleTypes: [
-          {
-            singularName: "about",
             queryParams: {
               populate: {
-                blocks: {
+                articles: {
                   populate: "*",
                 },
               },
             },
           },
           {
-            singularName: "global",
+            singularName: "tag",
             queryParams: {
               populate: {
-                favicon: "*",
-                defaultSeo: {
+                articles: {
                   populate: "*",
                 },
               },
             },
           },
         ],
+        // singleTypes: [
+        //   {
+        //     singularName: "about",
+        //     queryParams: {
+        //       populate: {
+        //         blocks: {
+        //           populate: "*",
+        //         },
+        //       },
+        //     },
+        //   },
+        //   {
+        //     singularName: "global",
+        //     queryParams: {
+        //       populate: {
+        //         favicon: "*",
+        //         defaultSeo: {
+        //           populate: "*",
+        //         },
+        //       },
+        //     },
+        //   },
+        // ],
       },
     },
   ],
