@@ -39,7 +39,7 @@ module.exports = {
               populate: {
                 cover: "*",
                 column: "*",
-                tag: "*",
+                tags: "*",
                 blocks: "*",
                 author: "*",
               },
@@ -52,9 +52,7 @@ module.exports = {
             singularName: "column",
             queryParams: {
               populate: {
-                articles: {
-                  populate: "*",
-                },
+                articles: "*",
               },
             },
           },
@@ -62,36 +60,31 @@ module.exports = {
             singularName: "tag",
             queryParams: {
               populate: {
-                articles: {
-                  populate: "*",
-                },
+                articles: "*",
               },
             },
           },
         ],
-        // singleTypes: [
-        //   {
-        //     singularName: "about",
-        //     queryParams: {
-        //       populate: {
-        //         blocks: {
-        //           populate: "*",
-        //         },
-        //       },
-        //     },
-        //   },
-        //   {
-        //     singularName: "global",
-        //     queryParams: {
-        //       populate: {
-        //         favicon: "*",
-        //         defaultSeo: {
-        //           populate: "*",
-        //         },
-        //       },
-        //     },
-        //   },
-        // ],
+        singleTypes: [
+          {
+            singularName: "about",
+            queryParams: {
+              populate: {
+                author: "*",
+                blocks: "*",
+              },
+            },
+          },
+          {
+            singularName: "global",
+            queryParams: {
+              populate: {
+                favicon: "*",
+                defaultSeo: "*",
+              },
+            },
+          },
+        ],
       },
     },
   ],
