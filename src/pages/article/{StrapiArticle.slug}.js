@@ -10,13 +10,11 @@ function Article({ data }) {
     )
 }
 
-// FIXME no need for slug in strapi
-// TODO Edit Strapi collection structure and content to reflect the real thing
+// TODO slug for thai content
 export const query = graphql`
     query ($id: String) {
         strapiArticle(id: { eq: $id }) {
             title
-            description
             publishedAt
         }
     }

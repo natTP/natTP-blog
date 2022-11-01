@@ -5,6 +5,13 @@ require("dotenv").config({
 module.exports = {
   plugins: [
     {
+      resolve: `gatsby-plugin-page-creator`,
+      options: {
+        path: `${__dirname}/src/pages`,
+        ignore: [`tag/tagTemplate.js`],
+      },
+    },
+    {
       resolve: `gatsby-plugin-react-svg`,
       options: {
         rule: {
