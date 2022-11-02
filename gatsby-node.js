@@ -1,4 +1,5 @@
 const path = require("path");
+const { stringToSlug } = require("./src/utils/slugUtils")
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -35,7 +36,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (tags.length > 0) {
     tags.forEach((tag) => {
       createPage({
-        path: `/tag/${tag.title.replace(" ", "-").toLowerCase()}`,
+        path: `/tag/${stringToSlug(tag.title)}`,
         component: tagTemplate,
       });
     });
