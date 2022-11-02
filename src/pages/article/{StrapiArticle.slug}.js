@@ -3,9 +3,16 @@ import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import ClickableColumnName from 'components/article/ClickableColumnName'
 import ClickableTag from 'components/article/ClickableTag'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendar, faBookmark } from '@fortawesome/free-regular-svg-icons'
+import { dateTimeStringToLocaleDateString } from 'utils/dateUtils'
 
+// TODO : Read time (thai)
 function Article({ data }) {
     const article = data.strapiArticle
+
+    console.log(article.publishedAt)
+    console.log(typeof article.publishedAt)
 
     return (
         <div className='grid grid-cols-5 gap-6'>
@@ -16,24 +23,41 @@ function Article({ data }) {
                     loading='eager'
                     className='my-4 rounded-lg'
                 />
-                <div className='flex flex-row gap-4'>
-                    <span
-                        className='inline-block w-2 h-full rounded shrink-0
+
+                <section className='flex flex-col gap-4'>
+                    <div className='flex flex-row gap-4'>
+                        <span
+                            className='inline-block w-2 h-full rounded shrink-0
                     bg-gradient-to-b from-rhodonite-300 to-amethyst-300'
-                    />
-                    <span>
-                        <ClickableColumnName column={article.column} />
-                        <h1 className='text-neutral-900 mt-1'>{article.title}</h1>
-                    </span>
-                </div>
+                        />
+                        <span>
+                            <ClickableColumnName column={article.column} />
+                            <h1 className='text-neutral-900 mt-1'>{article.title}</h1>
+                        </span>
+                    </div>
 
-                <div className='flex flex-row gap-x-3 gap-y-2 flex-wrap'>
-                    {article.tags.map((tag) => (
-                        <ClickableTag key={tag.id} tag={tag} />
-                    ))}
-                </div>
+                    <div
+                        className='flex flex-row gap-x-5 gap-y-1 flex-wrap
+                    font-loopless text-regular text-base text-neutral-500'
+                    >
+                        <span>
+                            <FontAwesomeIcon icon={faCalendar} className='mr-2' />
+                            {dateTimeStringToLocaleDateString(article.publishedAt)}
+                        </span>
+                        <span>
+                            <FontAwesomeIcon icon={faBookmark} className='mr-2' />
+                            เวลาอ่าน 10 นาที
+                        </span>
+                    </div>
 
-                <article>
+                    <div className='flex flex-row gap-x-3 gap-y-2 flex-wrap'>
+                        {article.tags.map((tag) => (
+                            <ClickableTag key={tag.id} tag={tag} />
+                        ))}
+                    </div>
+                </section>
+
+                <article className='mt-7'>
                     <p className='font-looped text-body tracking-wide w-full text-left'>
                         อึ๋ม บอดี้เพาเวอร์แชมปิยอง ซากุระซีนีเพล็กซ์ฟรังก์ ไนน์
                         จ๊อกกี้คันถธุระพล็อตโปรเจกเตอร์เบญจมบพิตร โกเต็กซ์สะบึมแต๋ว เซอร์โปรเจ็ค
