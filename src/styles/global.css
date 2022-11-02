@@ -40,7 +40,7 @@
     }
 
     .underline-gradient {
-        @apply bg-gradient-to-r from-rhodonite-300/30 to-amethyst-300/30 bg-no-repeat bg-[0%_90%] bg-[length:100%_0px] 
-            hover:bg-[length:100%_8px] transition-[background-size] ease-out duration-300;
+        @apply bg-gradient-to-r from-rhodonite-300/30 to-amethyst-300/30 bg-no-repeat bg-[0%_90%] bg-[length:0px_8px] 
+            hover:bg-[length:100%_8px] transition-[background-size] ease-out duration-500;
     }
 }
