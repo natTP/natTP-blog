@@ -3,6 +3,8 @@ import { Link } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
+// TODO : Hand-drawn arrow + asterisk icons
+
 function ClickableColumnName({ column, large }) {
     return (
         <Link

@@ -3,6 +3,7 @@ import { faFacebookF, faTwitter, faInstagram, faGithub } from '@fortawesome/free
 import React from 'react'
 
 function Socials({ className, iconSize = '1x', gap = 4 }) {
+    // TODO : Grab from backend
     const socials = [
         {
             id: 1,

@@ -1,4 +1,5 @@
 import React from 'react'
+import Wave from 'assets/wave-2.svg'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import ClickableColumnName from 'components/article/ClickableColumnName'
@@ -8,23 +9,24 @@ import { faCalendar, faBookmark } from '@fortawesome/free-regular-svg-icons'
 import { dateTimeStringToLocaleDateString } from 'utils/dateUtils'
 
 // TODO : Read time (thai)
+// TODO : Cover image parallax
 function Article({ data }) {
     const article = data.strapiArticle
-
-    console.log(article.publishedAt)
-    console.log(typeof article.publishedAt)
 
     return (
         <div className='grid grid-cols-5 gap-6'>
             <section className='col-span-full md:col-span-3 flex flex-col gap-4'>
-                <GatsbyImage
-                    image={getImage(article.cover.localFile)}
-                    alt={article.cover.alternativeText}
-                    loading='eager'
-                    className='my-4 rounded-lg'
-                />
+                <div className='w-full my-4 relative'>
+                    <GatsbyImage
+                        image={getImage(article.cover.localFile)}
+                        alt={article.cover.alternativeText}
+                        loading='eager'
+                        className='w-full rounded-lg'
+                    />
+                    <Wave className='z-10 absolute bottom-0 fill-white stroke-white stroke-[7px]' />
+                </div>
 
-                <section className='flex flex-col gap-4'>
+                <section className='mt-[-90px] sm:mt-[-170px] md:mt-[-115px] lg:mt-[-150px] xl:mt-[-190px] z-20 flex flex-col gap-4'>
                     <div className='flex flex-row gap-4'>
                         <span
                             className='inline-block w-2 h-full rounded shrink-0
@@ -84,7 +86,7 @@ export const query = graphql`
                 alternativeText
                 localFile {
                     childImageSharp {
-                        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                        gatsbyImageData(width: 672, height: 378, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                     }
                 }
             }
