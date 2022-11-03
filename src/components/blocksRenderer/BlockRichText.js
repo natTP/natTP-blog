@@ -14,7 +14,9 @@ function BlockRichText({ data }) {
             prose-h3:pt-0 prose-h3:font-medium prose-h4:pt-0
             
             prose-a:underline-link prose-a:no-underline
-            prose-a:font-medium'
+            prose-a:font-medium
+            
+            prose-pre:w-fill'
         >
             {htmlFromCMS && sanitizeHtml(htmlFromCMS)}
         </div>

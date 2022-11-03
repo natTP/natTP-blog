@@ -35,6 +35,14 @@ module.exports = {
               rel: "nofollow noopener noreferrer",
             },
           },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: ">",
+              showLineNumbers: true,
+            },
+          },
         ],
       },
     },
