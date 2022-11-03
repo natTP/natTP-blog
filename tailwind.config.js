@@ -39,6 +39,9 @@ module.exports = {
       full: "9999px",
     },
     extend: {
+      screens: {
+        xs: "460px",
+      },
       fontSize: {
         h1: ["2.25rem", "2.8125rem"],
         "h1-mobile": ["1.75rem", "2.1875rem"],

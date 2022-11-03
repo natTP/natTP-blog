@@ -29,7 +29,7 @@ function Navbar() {
     ]
 
     return (
-        <header className=' bg-neutral-100 sticky top-0 z-10'>
+        <header className=' bg-neutral-100 sticky top-0 z-50'>
             <div
                 className='px-5 md:px-[72px] py-2 2xl:max-w-[1392px] m-auto 
                 flex flex-row justify-between items-center flex-wrap'
