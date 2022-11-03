@@ -24,11 +24,24 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_blank",
+              rel: "nofollow noopener noreferrer",
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`IBM Plex Sans Thai Looped\:400,400i,700,700i`],
+        fonts: [`IBM Plex Sans Thai Looped\:400,400i,500,700,700i`],
         display: "swap",
       },
     },
@@ -47,7 +60,9 @@ module.exports = {
                 cover: "*",
                 column: "*",
                 tags: "*",
-                blocks: "*",
+                blocks: {
+                  populate: "*",
+                },
                 author: "*",
               },
             },

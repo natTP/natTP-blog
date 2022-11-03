@@ -11,6 +11,7 @@ import BlocksRenderer from 'components/blocksRenderer'
 
 // TODO : Read time (thai)
 // TODO : Cover image parallax
+// TODO : Table of Contents - pass blocks to that component
 function Article({ data }) {
     const article = data.strapiArticle
 
@@ -22,7 +23,7 @@ function Article({ data }) {
                         image={getImage(article.cover.localFile)}
                         alt={article.cover.alternativeText}
                         loading='eager'
-                        className='w-full rounded-lg'
+                        className='w-full rounded-lg aspect-[16/9]'
                     />
                     <Wave className='z-10 absolute bottom-0 fill-white stroke-white stroke-[7px]' />
                 </div>
@@ -61,30 +62,7 @@ function Article({ data }) {
                 </section>
 
                 <article className='mt-7'>
-                    {/* <BlocksRenderer blocks={article.blocks || []} /> */}
-                    <p className='font-looped text-body tracking-wide w-full text-left'>
-                        อึ๋ม บอดี้เพาเวอร์แชมปิยอง ซากุระซีนีเพล็กซ์ฟรังก์ ไนน์
-                        จ๊อกกี้คันถธุระพล็อตโปรเจกเตอร์เบญจมบพิตร โกเต็กซ์สะบึมแต๋ว เซอร์โปรเจ็ค
-                        พาวเวอร์แจมเพลซซิมโฟนี่ฮากกา คณาญาติโฟล์คไฮแจ็ค เทรนด์หมายปองช็อปปิ้ง เวณิกามินท์วีเจวิดีโอ
-                        เซนเซอร์เฟรม พันธุวิศวกรรมพุดดิ้งลามะชิฟฟอน พาเหรดมั้ง ออร์แกนแชมเปญต่อยอดโปรดิวเซอร์
-                        วาริชศาสตร์รีเสิร์ช ลาเต้ ตรวจทานลาเต้ไฮบริดวาซาบิแฮปปี้
-                        วินมยุราภิรมย์โอเปอเรเตอร์ตุ๊กตุ๊กจิตพิสัย พุดดิ้งฟรังก์ โค้ก บราอวอร์ดทาวน์เฮาส์มอคคา แจ๊กพ็อต
-                        วอลซ์ ครูเสด จีดีพีไฟต์แอคทีฟ เปียโนเอ็นเตอร์เทนอิสรชนรายชื่อ เอ็กซ์เพรสเดอะสป็อตไวกิ้ง
-                        โกลด์ไนน์เซอร์ไพรส์ ครัวซองมินต์โค้กรีพอร์ทไอเดีย แจ๊กเก็ต แซลมอนสตีลฮีโร่ล้มเหลวเทรนด์
-                        ฟลุตสไปเดอร์บุญคุณว้อดก้า โจ๋พุทธภูมิมาม่า นิรันดร์เฟิร์มเก๊ะ คอลเล็กชั่น
-                    </p>
-
-                    <p className='font-looped text-body tracking-wide w-full text-left'>
-                        อึ๋ม บอดี้เพาเวอร์แชมปิยอง ซากุระซีนีเพล็กซ์ฟรังก์ ไนน์
-                        จ๊อกกี้คันถธุระพล็อตโปรเจกเตอร์เบญจมบพิตร โกเต็กซ์สะบึมแต๋ว เซอร์โปรเจ็ค
-                        พาวเวอร์แจมเพลซซิมโฟนี่ฮากกา คณาญาติโฟล์คไฮแจ็ค เทรนด์หมายปองช็อปปิ้ง เวณิกามินท์วีเจวิดีโอ
-                        เซนเซอร์เฟรม พันธุวิศวกรรมพุดดิ้งลามะชิฟฟอน พาเหรดมั้ง ออร์แกนแชมเปญต่อยอดโปรดิวเซอร์
-                        วาริชศาสตร์รีเสิร์ช ลาเต้ ตรวจทานลาเต้ไฮบริดวาซาบิแฮปปี้
-                        วินมยุราภิรมย์โอเปอเรเตอร์ตุ๊กตุ๊กจิตพิสัย พุดดิ้งฟรังก์ โค้ก บราอวอร์ดทาวน์เฮาส์มอคคา แจ๊กพ็อต
-                        วอลซ์ ครูเสด จีดีพีไฟต์แอคทีฟ เปียโนเอ็นเตอร์เทนอิสรชนรายชื่อ เอ็กซ์เพรสเดอะสป็อตไวกิ้ง
-                        โกลด์ไนน์เซอร์ไพรส์ ครัวซองมินต์โค้กรีพอร์ทไอเดีย แจ๊กเก็ต แซลมอนสตีลฮีโร่ล้มเหลวเทรนด์
-                        ฟลุตสไปเดอร์บุญคุณว้อดก้า โจ๋พุทธภูมิมาม่า นิรันดร์เฟิร์มเก๊ะ คอลเล็กชั่น
-                    </p>
+                    <BlocksRenderer blocks={article.blocks || []} />
                 </article>
             </section>
         </div>
@@ -100,7 +78,7 @@ export const query = graphql`
                 alternativeText
                 localFile {
                     childImageSharp {
-                        gatsbyImageData(width: 672, height: 378, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                        gatsbyImageData(aspectRatio: 1.77, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                     }
                 }
             }
@@ -112,9 +90,9 @@ export const query = graphql`
                 id
                 title
             }
-            # blocks {
-            #     ...Blocks
-            # }
+            blocks {
+                ...Blocks
+            }
         }
     }
 `
