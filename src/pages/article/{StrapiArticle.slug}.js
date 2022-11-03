@@ -7,6 +7,7 @@ import ClickableTag from 'components/article/ClickableTag'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendar, faBookmark } from '@fortawesome/free-regular-svg-icons'
 import { dateTimeStringToLocaleDateString } from 'utils/dateUtils'
+import BlocksRenderer from 'components/blocksRenderer'
 
 // TODO : Read time (thai)
 // TODO : Cover image parallax
@@ -16,7 +17,7 @@ function Article({ data }) {
     return (
         <div className='grid grid-cols-5 gap-6'>
             <section className='col-span-full md:col-span-3 flex flex-col gap-4'>
-                <div className='w-full my-4 relative'>
+                <div className='w-full relative'>
                     <GatsbyImage
                         image={getImage(article.cover.localFile)}
                         alt={article.cover.alternativeText}
@@ -26,7 +27,7 @@ function Article({ data }) {
                     <Wave className='z-10 absolute bottom-0 fill-white stroke-white stroke-[7px]' />
                 </div>
 
-                <section className='mt-[-90px] xs:mt-[-120px] sm:mt-[-180px] md:mt-[-115px] lg:mt-[-150px] xl:mt-[-190px] z-20 flex flex-col gap-4'>
+                <section className='mt-[-54px] 2xs:mt-[-74px] xs:mt-[-104px] sm:mt-[-164px] md:mt-[-99px] lg:mt-[-134px] xl:mt-[-174px] z-20 flex flex-col gap-4'>
                     <div className='flex flex-row gap-4'>
                         <span
                             className='inline-block w-2 h-full rounded shrink-0
@@ -60,6 +61,7 @@ function Article({ data }) {
                 </section>
 
                 <article className='mt-7'>
+                    {/* <BlocksRenderer blocks={article.blocks || []} /> */}
                     <p className='font-looped text-body tracking-wide w-full text-left'>
                         อึ๋ม บอดี้เพาเวอร์แชมปิยอง ซากุระซีนีเพล็กซ์ฟรังก์ ไนน์
                         จ๊อกกี้คันถธุระพล็อตโปรเจกเตอร์เบญจมบพิตร โกเต็กซ์สะบึมแต๋ว เซอร์โปรเจ็ค
@@ -111,7 +113,7 @@ export const query = graphql`
                 title
             }
             # blocks {
-            #         ...Blocks
+            #     ...Blocks
             # }
         }
     }

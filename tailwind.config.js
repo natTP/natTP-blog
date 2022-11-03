@@ -40,7 +40,8 @@ module.exports = {
     },
     extend: {
       screens: {
-        xs: "460px",
+        "2xs": "324px",
+        xs: "424px",
       },
       fontSize: {
         h1: ["2.25rem", "2.8125rem"],
