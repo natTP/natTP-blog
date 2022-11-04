@@ -6,6 +6,7 @@ import { faBars, faMinus, faChevronUp, faChevronDown } from '@fortawesome/free-s
 import Logo from 'assets/logo/logo-official-color.svg'
 import Socials from './Socials'
 import DropdownMenu from './DropdownMenu'
+import ReadingProgress from 'components/article/ReadingProgress'
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -80,6 +81,7 @@ function Navbar() {
                     </ul>
                 </nav>
             </div>
+            <ReadingProgress />
         </header>
     )
 }
