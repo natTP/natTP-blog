@@ -35,7 +35,7 @@ function Navbar() {
                 className='px-5 md:px-[72px] py-2 2xl:max-w-[1392px] m-auto 
                 flex flex-row justify-between items-center flex-wrap'
             >
-                <Link to='/' className='flex flex-row items-end gap-0.5'>
+                <Link to='/' className='flex flex-row items-center gap-0.5'>
                     <Logo className='w-16 h-9' alt='natTP logo' />
                     <span className='font-decorative text-neutral-300'>Blog</span>
                 </Link>
