@@ -36,7 +36,11 @@ export const query = graphql`
             childStrapiComponentSharedRichTextBodyTextnode {
                 childMarkdownRemark {
                     html
-                    tableOfContents
+                    headings {
+                        depth
+                        id
+                        value
+                    }
                 }
             }
         }

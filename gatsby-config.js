@@ -29,11 +29,14 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: "gatsby-remark-external-links",
+            resolve: `gatsby-remark-external-links`,
             options: {
               target: "_blank",
               rel: "nofollow noopener noreferrer",
             },
+          }, 
+          {
+            resolve: `gatsby-remark-autolink-headers`,
           },
           {
             resolve: `gatsby-remark-prismjs`,

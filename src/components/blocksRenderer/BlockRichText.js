@@ -1,8 +1,15 @@
 import React from 'react'
-import { sanitizeHtml } from 'utils/sanitizeHtml'
+import parse from 'html-react-parser'
+import DOMPurify from 'dompurify'
 
 function BlockRichText({ data }) {
     const htmlFromCMS = data.childStrapiComponentSharedRichTextBodyTextnode.childMarkdownRemark.html
+
+    const sanitizeHtml = (htmlString) => {
+        const cleanHtmlString = DOMPurify.sanitize(htmlString, { USE_PROFILES: { html: true }, ADD_ATTR: ['target'] })
+        const html = parse(cleanHtmlString)
+        return html
+    }
 
     return (
         <div

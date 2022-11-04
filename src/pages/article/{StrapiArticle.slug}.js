@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendar, faBookmark } from '@fortawesome/free-regular-svg-icons'
 import { dateTimeStringToLocaleDateString } from 'utils/dateUtils'
 import BlocksRenderer from 'components/blocksRenderer'
+import TableOfContents from 'components/article/TableOfContents'
 
 // TODO : Read time (thai)
 // TODO : Cover image parallax
@@ -65,6 +66,7 @@ function Article({ data }) {
                     <BlocksRenderer blocks={article.blocks || []} />
                 </article>
             </section>
+            <TableOfContents blocks={article.blocks} className='hidden md:block col-span-2 sticky top-20 md:mt-[50%]' />
         </div>
     )
 }
