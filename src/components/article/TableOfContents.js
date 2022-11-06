@@ -16,6 +16,23 @@ function TableOfContents({ blocks, className }) {
         }
     })
 
+    const calculateMargin = (depth) => {
+        switch (depth) {
+            case 2:
+                return 'mt-4 mb-1'
+            case 3:
+                return 'my-1 ml-8'
+            case 4:
+                return 'my-1 ml-12'
+            case 5:
+                return 'my-1 ml-16'
+            case 6:
+                return 'my-1 ml-20'
+            default:
+                return ''
+        }
+    }
+
     return (
         <nav className={`h-fit px-6 ${className} overflow-auto`}>
             <h2 className='font-decorative text-xl leading-4 uppercase text-neutral-300'>Contents</h2>
@@ -23,10 +40,9 @@ function TableOfContents({ blocks, className }) {
                 {contents.map((item) => (
                     <li
                         key={`${item.depth}-${item.id}`}
-                        className={`group w-fit ml-${String((item.depth - 2) * 4)} ${
-                            item.depth > 2 ? 'my-1' : 'mt-4 mb-1'
-                        }
-												${activeId === item.id ? 'font-bold text-gradient' : 'text-neutral-500'}`}
+                        className={`group w-fit
+                        ${calculateMargin(item.depth)}
+						${activeId === item.id ? 'font-bold text-gradient' : 'text-neutral-500'}`}
                     >
                         <a href={`#${item.id}`} className='underline-gradient'>
                             {item.value}
