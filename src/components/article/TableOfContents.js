@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useHeadingObserver from 'hooks/useHeadingObserver'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
+import { faAsterisk, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 // TODO : Hand-drawn asterisk
-function TableOfContents({ blocks, className }) {
+function TableOfContents({ blocks, expandable, className }) {
     const activeId = useHeadingObserver()
+    const [isExpanded, setIsExpanded] = useState(expandable ? false : true)
 
     const contents = []
 
@@ -34,25 +35,38 @@ function TableOfContents({ blocks, className }) {
     }
 
     return (
-        <nav className={`h-fit px-6 ${className} overflow-auto`}>
-            <h2 className='font-decorative text-xl leading-4 uppercase text-neutral-300'>Contents</h2>
-            <ul className='my-4 font-loopless font-medium text-body tracking-wide'>
-                {contents.map((item) => (
-                    <li
-                        key={`${item.depth}-${item.id}`}
-                        className={`group w-fit
+        <nav className={`h-fit ${className} overflow-auto`}>
+            <div className='flex items-baseline gap-2'>
+                <h2 className='font-decorative text-xl leading-4 uppercase text-neutral-300'>Table of Contents</h2>
+
+                {expandable && (
+                    <button
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        className='font-loopless font-medium text-sm text-neutral-500 underline-link'
+                    >
+                        [{isExpanded ? 'Hide' : 'Show'}]
+                    </button>
+                )}
+            </div>
+            {isExpanded && (
+                <ul className='my-4 font-loopless font-medium text-body tracking-wide'>
+                    {contents.map((item) => (
+                        <li
+                            key={`${item.depth}-${item.id}`}
+                            className={`group w-fit
                         ${calculateMargin(item.depth)}
 						${activeId === item.id ? 'font-bold text-gradient' : 'text-neutral-500'}`}
-                    >
-                        <a href={`#${item.id}`} className='underline-gradient'>
-                            {item.value}
-                        </a>
-                        {activeId === item.id && (
-                            <FontAwesomeIcon icon={faAsterisk} size='xs' className=' ml-1 text-amethyst-300' />
-                        )}
-                    </li>
-                ))}
-            </ul>
+                        >
+                            <a href={`#${item.id}`} className='underline-gradient'>
+                                {item.value}
+                            </a>
+                            {activeId === item.id && (
+                                <FontAwesomeIcon icon={faAsterisk} size='xs' className=' ml-1 text-amethyst-300' />
+                            )}
+                        </li>
+                    ))}
+                </ul>
+            )}
         </nav>
     )
 }

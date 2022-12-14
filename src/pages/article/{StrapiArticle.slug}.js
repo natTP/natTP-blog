@@ -12,7 +12,7 @@ import TableOfContents from 'components/article/TableOfContents'
 
 // TODO : Read time (thai)
 // TODO : Cover image parallax
-// TODO : Table of Contents - pass blocks to that component
+// FIXME : Image section position could be dynamic
 function Article({ data }) {
     const article = data.strapiArticle
 
@@ -62,11 +62,16 @@ function Article({ data }) {
                     </div>
                 </section>
 
-                <article className='mt-7'>
+                <TableOfContents blocks={article.blocks} expandable className='block md:hidden mt-7' />
+
+                <article className='mt-3 md:mt-7'>
                     <BlocksRenderer blocks={article.blocks || []} />
                 </article>
             </section>
-            <TableOfContents blocks={article.blocks} className='hidden md:block col-span-2 sticky top-20 md:mt-[50%]' />
+            <TableOfContents
+                blocks={article.blocks}
+                className='hidden md:block col-span-2 sticky top-20 px-6 md:mt-[50%]'
+            />
         </div>
     )
 }
