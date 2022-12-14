@@ -2,7 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faTwitter, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons'
 import React from 'react'
 
-function Socials({ className, iconSize = '1x', gap = 4 }) {
+function Socials({
+    className,
+    iconSize = '1x',
+    gap = 4,
+    color = { default: 'text-neutral-500', hover: 'text-neutral-300' },
+}) {
     // TODO : Grab from backend
     const socials = [
         {
@@ -44,8 +49,8 @@ function Socials({ className, iconSize = '1x', gap = 4 }) {
                             icon={item.icon}
                             size={iconSize}
                             title={`link to ${item.socialName}`}
-                            className='text-neutral-500 hover:text-neutral-300 focus:text-neutral-700 
-                            transition-all ease-in duration-300'
+                            className={`${color.default} hover:${color.hover} focus:text-neutral-700 
+                            transition-all ease-in duration-300`}
                         />
                     </a>
                 </li>

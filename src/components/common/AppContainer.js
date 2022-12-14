@@ -2,6 +2,7 @@ import React from 'react'
 import Footer from './Footer'
 import Navbar from './Navbar'
 
+// TODO global socials?
 function AppContainer({ className, children }) {
     return (
         <div className={`w-screen min-h-screen relative bg-white ${className}`}>

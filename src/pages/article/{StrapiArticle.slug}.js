@@ -10,6 +10,7 @@ import { dateTimeStringToLocaleDateString } from 'utils/dateUtils'
 import BlocksRenderer from 'components/blocksRenderer'
 import TableOfContents from 'components/article/TableOfContents'
 import ReferenceItem from 'components/article/ReferenceItem'
+import AboutAuthor from 'components/article/AboutAuthor'
 
 // TODO : Read time (thai)
 // TODO : Cover image parallax
@@ -79,6 +80,8 @@ function Article({ data }) {
                         </ul>
                     </section>
                 )}
+
+                <AboutAuthor author={article.author} className='mt-7' />
             </section>
             <TableOfContents
                 blocks={article.blocks}
@@ -120,6 +123,21 @@ export const query = graphql`
                 author
                 dateCreated
                 dateAccessed
+            }
+            author {
+                title
+                description
+                socials {
+                    link
+                }
+                avatar {
+                    alternativeText
+                    localFile {
+                        childImageSharp {
+                            gatsbyImageData(aspectRatio: 1, placeholder: BLURRED)
+                        }
+                    }
+                }
             }
         }
     }
