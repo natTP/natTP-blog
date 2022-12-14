@@ -65,7 +65,7 @@ function Navbar() {
                                                 size='xs'
                                             />
                                         </button>
-                                        {isDropdownOpen && <DropdownMenu className='md:absolute md:top-8' />}
+                                        {isDropdownOpen && <DropdownMenu className='md:absolute md:top-8 z-10' />}
                                     </div>
                                 ) : (
                                     <Link
