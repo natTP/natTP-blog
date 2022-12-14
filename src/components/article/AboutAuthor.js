@@ -1,6 +1,7 @@
-import Socials from 'components/common/Socials'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import React from 'react'
+import Socials from 'components/common/Socials'
+import { Link } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 function AboutAuthor({ author, className }) {
     console.log(author)
@@ -17,7 +18,9 @@ function AboutAuthor({ author, className }) {
                     About the Author
                 </h2>
                 <div className='flex items-baseline gap-4'>
-                    <h3 className='font-loopless text-h2 text-neutral-700'>{author.title}</h3>
+                    <h3 className='font-loopless text-h2 text-neutral-700'>
+                        <Link to='/about'>{author.title}</Link>
+                    </h3>
                     <Socials gap={2} color={{ default: 'text-neutral-300', hover: 'text-neutral-500' }} />
                 </div>
                 <p className='font-loopless font-normal text-neutral-500'>{author.description}</p>
