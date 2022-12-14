@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import useHeadingObserver from 'hooks/useHeadingObserver'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAsterisk, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
 
 // TODO : Hand-drawn asterisk
 function TableOfContents({ blocks, expandable, className }) {
