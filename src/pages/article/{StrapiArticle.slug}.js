@@ -9,6 +9,7 @@ import { faCalendar, faBookmark } from '@fortawesome/free-regular-svg-icons'
 import { dateTimeStringToLocaleDateString } from 'utils/dateUtils'
 import BlocksRenderer from 'components/blocksRenderer'
 import TableOfContents from 'components/article/TableOfContents'
+import ReferenceItem from 'components/article/ReferenceItem'
 
 // TODO : Read time (thai)
 // TODO : Cover image parallax
@@ -67,6 +68,17 @@ function Article({ data }) {
                 <article className='mt-3 md:mt-7'>
                     <BlocksRenderer blocks={article.blocks || []} />
                 </article>
+
+                {article.references.length > 0 && (
+                    <section className='mt-7'>
+                        <h2 className='text-neutral-700 mb-3'>อ้างอิง</h2>
+                        <ul>
+                            {article.references.map((reference) => (
+                                <ReferenceItem key={reference.id} reference={reference} />
+                            ))}
+                        </ul>
+                    </section>
+                )}
             </section>
             <TableOfContents
                 blocks={article.blocks}
@@ -99,6 +111,15 @@ export const query = graphql`
             }
             blocks {
                 ...Blocks
+            }
+            references {
+                id
+                type
+                title
+                link
+                author
+                dateCreated
+                dateAccessed
             }
         }
     }

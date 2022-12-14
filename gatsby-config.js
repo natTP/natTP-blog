@@ -34,7 +34,7 @@ module.exports = {
               target: "_blank",
               rel: "nofollow noopener noreferrer",
             },
-          }, 
+          },
           {
             resolve: `gatsby-remark-autolink-headers`,
           },
@@ -75,6 +75,7 @@ module.exports = {
                   populate: "*",
                 },
                 author: "*",
+                references: "*",
               },
             },
           },
