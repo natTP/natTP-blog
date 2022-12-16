@@ -1,16 +1,19 @@
 import React from 'react'
 import Wave from 'assets/wave-2.svg'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import ClickableColumnName from 'components/article/ClickableColumnName'
 import ClickableTag from 'components/article/ClickableTag'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faCalendar, faBookmark } from '@fortawesome/free-regular-svg-icons'
 import { dateTimeStringToLocaleDateString } from 'utils/dateUtils'
 import BlocksRenderer from 'components/blocksRenderer'
 import TableOfContents from 'components/article/TableOfContents'
 import ReferenceItem from 'components/article/ReferenceItem'
 import AboutAuthor from 'components/article/AboutAuthor'
+import Button from 'components/common/Button'
+import LikeSection from 'components/article/LikeSection'
 
 // TODO : Read time (thai)
 // TODO : Cover image parallax
@@ -28,6 +31,13 @@ function Article({ data }) {
                         loading='eager'
                         className='w-full rounded-lg aspect-[16/9]'
                     />
+                    <Button
+                        icon={{ icon: faChevronLeft }}
+                        className='absolute top-5 left-5'
+                        onClick={() => navigate(-1)}
+                    >
+                        Back
+                    </Button>
                     <Wave className='z-10 absolute bottom-0 fill-white stroke-white stroke-[7px]' />
                 </div>
 
@@ -81,6 +91,8 @@ function Article({ data }) {
                     </section>
                 )}
 
+                <LikeSection className='mt-7' articleId={article.slug} />
+
                 <AboutAuthor author={article.author} className='mt-7' />
             </section>
             <TableOfContents
@@ -95,6 +107,7 @@ export const query = graphql`
     query ($id: String) {
         strapiArticle(id: { eq: $id }) {
             title
+            slug
             publishedAt
             cover {
                 alternativeText
