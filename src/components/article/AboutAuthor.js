@@ -4,7 +4,6 @@ import { Link } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 function AboutAuthor({ author, className }) {
-    console.log(author)
     return (
         <section className={`grid grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-8 items-center ${className}`}>
             <GatsbyImage
@@ -18,7 +17,7 @@ function AboutAuthor({ author, className }) {
                     About the Author
                 </h2>
                 <div className='flex items-baseline gap-4'>
-                    <h3 className='font-loopless text-h2 text-neutral-700'>
+                    <h3 className='font-loopless text-h2 text-neutral-700 active:text-neutral-900 underline-gradient'>
                         <Link to='/about'>{author.title}</Link>
                     </h3>
                     <Socials gap={2} color={{ default: 'text-neutral-300', hover: 'text-neutral-500' }} />

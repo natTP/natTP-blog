@@ -57,7 +57,7 @@ function TableOfContents({ blocks, expandable, className }) {
                         ${calculateMargin(item.depth)}
 						${activeId === item.id ? 'font-bold text-gradient' : 'text-neutral-500'}`}
                         >
-                            <a href={`#${item.id}`} className='underline-gradient'>
+                            <a href={`#${item.id}`} className='underline-gradient focus:text-neutral-700'>
                                 {item.value}
                             </a>
                             {activeId === item.id && (
