@@ -41,6 +41,11 @@ export const query = graphql`
                         id
                         value
                     }
+                    fields {
+                        readingTime {
+                            minutes
+                        }
+                    }
                 }
             }
         }

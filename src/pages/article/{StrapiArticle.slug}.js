@@ -14,11 +14,13 @@ import ReferenceItem from 'components/article/ReferenceItem'
 import AboutAuthor from 'components/article/AboutAuthor'
 import Button from 'components/common/Button'
 import LikeSection from 'components/article/LikeSection'
+import { calculateTotalReadTime } from 'utils/readTimeUtils'
 
 // TODO : Read time (thai)
 // TODO : Cover image parallax
 // FIXME : Image section position could be dynamic
 function Article({ data }) {
+    console.log(data)
     const article = data.strapiArticle
 
     return (
@@ -63,7 +65,7 @@ function Article({ data }) {
                         </span>
                         <span>
                             <FontAwesomeIcon icon={faBookmark} className='mr-2' />
-                            เวลาอ่าน 10 นาที
+                            เวลาอ่าน {calculateTotalReadTime(article.blocks)} นาที
                         </span>
                     </div>
 
@@ -150,6 +152,14 @@ export const query = graphql`
                             gatsbyImageData(aspectRatio: 1, placeholder: BLURRED)
                         }
                     }
+                }
+            }
+        }
+        markdownRemark {
+            fields {
+                readingTime {
+                    minutes
+                    words
                 }
             }
         }
