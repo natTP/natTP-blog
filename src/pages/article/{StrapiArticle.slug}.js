@@ -21,7 +21,6 @@ import { calculateTotalReadTime } from 'utils/readTimeUtils'
 // TODO : Cover image parallax
 // FIXME : Image section position could be dynamic
 function Article({ data }) {
-    console.log(data)
     const article = data.strapiArticle
     const nextArticles = data.allStrapiArticle
 
@@ -105,7 +104,7 @@ function Article({ data }) {
             />
             <section className='mt-14 col-span-full'>
                 <h2 className='text-neutral-700 mb-3'>คุณอาจสนใจ...</h2>
-                <ul className='grid grid-cols-3 gap-6 py-5'>
+                <ul className='grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-6 py-5'>
                     {nextArticles.nodes.map((article) => (
                         <ArticleCard key={article.id} article={article} />
                     ))}
@@ -115,6 +114,7 @@ function Article({ data }) {
     )
 }
 
+// TODO (backend) random article
 export const query = graphql`
     query ($id: String) {
         strapiArticle(id: { eq: $id }) {
