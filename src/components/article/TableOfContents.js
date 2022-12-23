@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import useHeadingObserver from 'hooks/useHeadingObserver'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
+import useScrollPosition from 'hooks/useScrollPosition'
 
 // TODO : Hand-drawn asterisk
 function TableOfContents({ blocks, expandable, className }) {
     const activeId = useHeadingObserver()
+    const scrollPosition = useScrollPosition()
     const [isExpanded, setIsExpanded] = useState(expandable ? false : true)
 
     const contents = []
@@ -34,8 +36,10 @@ function TableOfContents({ blocks, expandable, className }) {
         }
     }
 
+    if (scrollPosition > 90) return null
+
     return (
-        <nav className={`h-fit ${className} overflow-auto`}>
+        <nav className={`h-fit max-h-screen ${className} ${expandable ? '' : 'overflow-auto'} row-span-1`}>
             <div className='flex items-baseline gap-2'>
                 <h2 className='font-decorative text-xl leading-4 uppercase text-neutral-300'>Table of Contents</h2>
 
