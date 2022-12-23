@@ -2,26 +2,28 @@ import React from 'react'
 import Wave from 'assets/wave-2.svg'
 import { graphql, navigate } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import ClickableColumnName from 'components/article/ClickableColumnName'
-import ClickableTag from 'components/article/ClickableTag'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faCalendar, faBookmark } from '@fortawesome/free-regular-svg-icons'
-import { dateTimeStringToLocaleDateString } from 'utils/dateUtils'
+import ClickableColumnName from 'components/article/ClickableColumnName'
+import ClickableTag from 'components/article/ClickableTag'
 import BlocksRenderer from 'components/blocksRenderer'
 import TableOfContents from 'components/article/TableOfContents'
 import ReferenceItem from 'components/article/ReferenceItem'
 import AboutAuthor from 'components/article/AboutAuthor'
 import Button from 'components/common/Button'
 import LikeSection from 'components/article/LikeSection'
+import ArticleCard from 'components/card/ArticleCard'
+import { dateTimeStringToLocaleDateString } from 'utils/dateUtils'
 import { calculateTotalReadTime } from 'utils/readTimeUtils'
 
-// TODO : Read time (thai)
+// TODO : Views (from analytics)
 // TODO : Cover image parallax
 // FIXME : Image section position could be dynamic
 function Article({ data }) {
     console.log(data)
     const article = data.strapiArticle
+    const nextArticles = data.allStrapiArticle
 
     return (
         <div className='grid grid-cols-5 gap-6'>
@@ -101,6 +103,14 @@ function Article({ data }) {
                 blocks={article.blocks}
                 className='hidden md:block col-span-2 sticky top-20 px-6 md:mt-[50%]'
             />
+            <section className='mt-14 col-span-full'>
+                <h2 className='text-neutral-700 mb-3'>คุณอาจสนใจ...</h2>
+                <ul className='grid grid-cols-3 gap-6 py-5'>
+                    {nextArticles.nodes.map((article) => (
+                        <ArticleCard key={article.id} article={article} />
+                    ))}
+                </ul>
+            </section>
         </div>
     )
 }
@@ -155,11 +165,37 @@ export const query = graphql`
                 }
             }
         }
-        markdownRemark {
-            fields {
-                readingTime {
-                    minutes
-                    words
+        allStrapiArticle(limit: 3) {
+            nodes {
+                id
+                title
+                slug
+                column {
+                    title
+                    slug
+                }
+                publishedAt
+                blocks {
+                    __typename
+                    ... on STRAPI__COMPONENT_SHARED_RICH_TEXT {
+                        childStrapiComponentSharedRichTextBodyTextnode {
+                            childMarkdownRemark {
+                                fields {
+                                    readingTime {
+                                        minutes
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                cover {
+                    alternativeText
+                    localFile {
+                        childImageSharp {
+                            gatsbyImageData(aspectRatio: 1.77, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                        }
+                    }
                 }
             }
         }
