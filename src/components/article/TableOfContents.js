@@ -4,11 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
 import useScrollPosition from 'hooks/useScrollPosition'
 
-// TODO : Hand-drawn asterisk
 function TableOfContents({ blocks, expandable, className }) {
     const activeId = useHeadingObserver()
     const scrollPosition = useScrollPosition()
-    const [isExpanded, setIsExpanded] = useState(expandable ? false : true)
+    const [isExpanded, setIsExpanded] = useState(true)
 
     const contents = []
 

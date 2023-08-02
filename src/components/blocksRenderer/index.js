@@ -4,6 +4,7 @@ import BlockEmbeddedVideo from './BlockEmbeddedVideo'
 import BlockMedia from './BlockMedia'
 import BlockQuote from './BlockQuote'
 import BlockRichText from './BlockRichText'
+import TableOfContents from 'components/article/TableOfContents'
 
 const blockTypeMap = {
     STRAPI__COMPONENT_SHARED_EMBEDDED_VIDEO: BlockEmbeddedVideo,
@@ -22,9 +23,21 @@ const Block = ({ block }) => {
 function BlocksRenderer({ blocks }) {
     return (
         <div className='flex flex-col gap-5'>
-            {blocks.map((block, index) => (
-                <Block key={`${index}${block.__typename}`} block={block} />
-            ))}
+            {blocks.map((block, index) => {
+                if (index === 0) {
+                    return (
+                        <>
+                            <Block key={`${index}${block.__typename}`} block={block} />
+                            <TableOfContents
+                                blocks={blocks}
+                                expandable
+                                className='block md:hidden bg-neutral-100 px-8 py-4 rounded'
+                            />
+                        </>
+                    )
+                }
+                return <Block key={`${index}${block.__typename}`} block={block} />
+            })}
         </div>
     )
 }

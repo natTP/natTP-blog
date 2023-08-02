@@ -79,8 +79,6 @@ function Article({ data }) {
                     </div>
                 </section>
 
-                <TableOfContents blocks={article.blocks} expandable className='block md:hidden mt-7' />
-
                 <article className='mt-3 md:mt-7'>
                     <BlocksRenderer blocks={article.blocks || []} />
                 </article>
