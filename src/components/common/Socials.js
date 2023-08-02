@@ -13,7 +13,7 @@ function Socials({
         {
             id: 1,
             socialName: 'facebook',
-            href: 'https://www.facebook.com/natTP.page',
+            href: 'https://www.facebook.com/natTPpage',
             username: 'natTP.page',
             icon: faFacebookF,
         },
@@ -27,7 +27,7 @@ function Socials({
         {
             id: 3,
             socialName: 'instagram',
-            href: 'https://www.instagram.com/art.at.natty.p',
+            href: 'https://www.instagram.com/art.at.nattp',
             username: 'art.at.natty.p',
             icon: faInstagram,
         },
