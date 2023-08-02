@@ -45,7 +45,7 @@ function ArticleCard({ article, small, showColumn = true, className }) {
     }
 
     return (
-        <div className={`${className} grid grid-cols-1 xs:grid-cols-3 md:grid-cols-1 gap-6`}>
+        <div className={`${className} grid grid-cols-1 xs:grid-cols-3 md:grid-cols-1 gap-6 self-start`}>
             <Link to={`/article/${article.slug}`}>
                 <GatsbyImage
                     image={getImage(article.cover.localFile)}
@@ -54,8 +54,8 @@ function ArticleCard({ article, small, showColumn = true, className }) {
                     className='rounded aspect-[16/9] grid-span-1'
                 />
             </Link>
-            <div className='col-span-ful xs:col-span-2 md:col-span-full flex flex-col gap-2'>
-                {article.column && <ClickableColumnName column={article.column} />}
+            <div className='xs:col-span-2 md:col-span-full flex flex-col gap-2'>
+                {showColumn && article.column && <ClickableColumnName column={article.column} />}
                 <Link to={`/article/${article.slug}`}>
                     <h3 className='inline underline-gradient text-neutral-700 focus:text-neutral-900'>
                         {article.title}

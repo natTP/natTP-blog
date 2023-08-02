@@ -1,14 +1,20 @@
-import { Link } from 'gatsby'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 
 function DropdownMenu({ className }) {
-    // TODO : Grab from backend
-    const categories = [
-        { id: 1, slug: 'design-dev-story', name: 'Design/Dev Story' },
-        { id: 2, slug: 'literature-review', name: 'Literature Review' },
-        { id: 3, slug: 'my-experience', name: 'My Experience' },
-        { id: 4, slug: 'writers-road', name: "Writer's Road" },
-    ]
+    const categoriesQuery = useStaticQuery(graphql`
+        query {
+            allStrapiColumn {
+                nodes {
+                    title
+                    id
+                    slug
+                }
+            }
+        }
+    `)
+
+    const categories = categoriesQuery.allStrapiColumn.nodes
 
     // TODO : Staggered appear
     return (
@@ -18,7 +24,7 @@ function DropdownMenu({ className }) {
                     key={category.id}
                     className='px-4 py-2 md:py-3 w-full font-loopless font-regular cursor-pointer text-neutral-500 hover:bg-neutral-200 focus:bg-neutral-300'
                 >
-                    <Link to={`/column/${category.slug}`}>{category.name}</Link>
+                    <Link to={`/column/${category.slug}`}>{category.title}</Link>
                 </li>
             ))}
         </ul>
