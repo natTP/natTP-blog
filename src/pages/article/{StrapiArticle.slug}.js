@@ -16,13 +16,15 @@ import LikeSection from 'components/article/LikeSection'
 import ArticleCard from 'components/card/ArticleCard'
 import { dateTimeStringToLocaleDateString } from 'utils/dateUtils'
 import { calculateTotalReadTime } from 'utils/readTimeUtils'
+import { getRandCombination } from 'utils/randUtils'
 
 // TODO : Views (from analytics)
 // TODO : Cover image parallax
+// TODO : Move table of contents to after first block
 // FIXME : Image section position could be dynamic
 function Article({ data }) {
     const article = data.strapiArticle
-    const nextArticles = data.allStrapiArticle
+    const nextArticles = getRandCombination(data.allStrapiArticle.nodes, 3)
 
     return (
         <div className='grid grid-cols-5 gap-6'>
@@ -105,7 +107,7 @@ function Article({ data }) {
             <section className='mt-14 col-span-full'>
                 <h2 className='text-neutral-700 mb-3'>คุณอาจสนใจ...</h2>
                 <ul className='grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-6 py-5'>
-                    {nextArticles.nodes.map((article) => (
+                    {nextArticles.map((article) => (
                         <ArticleCard key={article.id} article={article} />
                     ))}
                 </ul>
@@ -114,7 +116,6 @@ function Article({ data }) {
     )
 }
 
-// TODO (backend) random article
 export const query = graphql`
     query ($id: String) {
         strapiArticle(id: { eq: $id }) {
@@ -165,7 +166,7 @@ export const query = graphql`
                 }
             }
         }
-        allStrapiArticle(limit: 3) {
+        allStrapiArticle(limit: 10, sort: { fields: publishedAt, order: DESC }) {
             nodes {
                 id
                 title
