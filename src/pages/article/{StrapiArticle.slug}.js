@@ -20,8 +20,6 @@ import { getRandCombination } from 'utils/randUtils'
 
 // TODO : Views (from analytics)
 // TODO : Cover image parallax
-// TODO : Move table of contents to after first block
-// FIXME : Image section position could be dynamic
 function Article({ data }) {
     const article = data.strapiArticle
     const nextArticles = getRandCombination(data.allStrapiArticle.nodes, 3)
@@ -43,10 +41,10 @@ function Article({ data }) {
                     >
                         Back
                     </Button>
-                    <Wave className='z-10 absolute bottom-0 fill-white stroke-white stroke-[7px]' />
+                    <Wave className='z-10 absolute bottom-[-30%] fill-white stroke-white stroke-[7px]' />
                 </div>
 
-                <section className='mt-[-54px] 2xs:mt-[-74px] xs:mt-[-104px] sm:mt-[-164px] md:mt-[-99px] lg:mt-[-134px] xl:mt-[-174px] z-20 flex flex-col gap-4'>
+                <section className='mt-[-5%] z-20 flex flex-col gap-4'>
                     <div className='flex flex-row gap-4'>
                         <span
                             className='inline-block w-2 h-full rounded shrink-0
@@ -100,7 +98,7 @@ function Article({ data }) {
             </section>
             <TableOfContents
                 blocks={article.blocks}
-                className='hidden md:block col-span-2 sticky top-20 px-6 md:mt-[50%]'
+                className='hidden md:block col-span-2 sticky top-20 px-6 md:mt-[20%]'
             />
             <section className='mt-14 col-span-full'>
                 <h2 className='text-neutral-700 mb-3'>คุณอาจสนใจ...</h2>
