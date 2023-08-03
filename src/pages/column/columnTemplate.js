@@ -4,7 +4,6 @@ import ArticleCard from 'components/card/ArticleCard'
 import Pagination from 'components/common/Pagination'
 
 // TODO : sort by views - make a wholly different set of paginated pages for different sorts (will be 2 sets)
-// TODO NEXT : pagination
 function Column({ data, pageContext }) {
     console.log(pageContext)
     const sortStates = [
@@ -27,7 +26,7 @@ function Column({ data, pageContext }) {
                 <p className='mt-4 font-loopless text-body text-neutral-700'>{column.description}</p>
             </section>
 
-            <section className='sm:mt-6 col-span-full'>
+            <section className='sm:mt-6 col-span-full flex flex-col items-center gap-8'>
                 {/* <div className='font-loopless text-neutral-500 flex flex-wrap items-center gap-x-4 gap-y-1'>
                     เรียงตาม
                     {sortStates.map((sortState, index) => (

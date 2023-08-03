@@ -83,11 +83,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       paginate({
         createPage,
         items: articles.data.allStrapiArticle.nodes,
-        itemsPerPage: 2,
+        itemsPerPage: 9,
         pathPrefix: `/column/${column.slug}`,
         component: columnTemplate,
         context: {
           id: column.id,
+          pathPrefix: `/column/${column.slug}`,
         },
       });
     });
