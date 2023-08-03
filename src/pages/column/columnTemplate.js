@@ -1,20 +1,18 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import ArticleCard from 'components/card/ArticleCard'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSortAmountUp, faSortAmountDown } from '@fortawesome/free-solid-svg-icons'
+import Pagination from 'components/common/Pagination'
 
-// TODO : sort by views
-// TODO : pagination
-function Column({ data }) {
+// TODO : sort by views - make a wholly different set of paginated pages for different sorts (will be 2 sets)
+// TODO NEXT : pagination
+function Column({ data, pageContext }) {
+    console.log(pageContext)
     const sortStates = [
-        { slug: 'published-at', label: 'วันที่เขียน', sortFields: 'publishedAt' },
-        { slug: 'title', label: 'ชื่อบทความ', sortFields: 'title' },
-        { slug: 'pageviews', label: 'ยอดเข้าชม', sortFields: '' },
+        { slug: 'published-at', label: 'วันที่เขียน' },
+        { slug: 'pageviews', label: 'ยอดเข้าชม' },
     ]
 
     const [sortStateIndex, setSortStateIndex] = useState(0)
-    const [isSortAscending, setIsSortAscending] = useState(false)
 
     const column = data.strapiColumn
     const articles = data.allStrapiArticle.nodes
@@ -30,7 +28,7 @@ function Column({ data }) {
             </section>
 
             <section className='sm:mt-6 col-span-full'>
-                <div className='font-loopless text-neutral-500 flex flex-wrap items-center gap-x-4 gap-y-1'>
+                {/* <div className='font-loopless text-neutral-500 flex flex-wrap items-center gap-x-4 gap-y-1'>
                     เรียงตาม
                     {sortStates.map((sortState, index) => (
                         <button
@@ -40,31 +38,30 @@ function Column({ data }) {
                             {sortState.label}
                         </button>
                     ))}
-                    <button className='text-amethyst-500' onClick={() => setIsSortAscending(!isSortAscending)}>
-                        {isSortAscending ? (
-                            <FontAwesomeIcon icon={faSortAmountUp} />
-                        ) : (
-                            <FontAwesomeIcon icon={faSortAmountDown} />
-                        )}
-                    </button>
-                </div>
+                </div> */}
                 <ul className='grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-x-6 gap-y-8 py-5'>
                     {articles.map((article) => (
                         <ArticleCard key={article.id} article={article} showColumn={false} />
                     ))}
                 </ul>
+                <Pagination pageContext={pageContext} />
             </section>
         </div>
     )
 }
 
 export const query = graphql`
-    query ($id: String) {
+    query ($id: String, $skip: Int, $limit: Int) {
         strapiColumn(id: { eq: $id }) {
             title
             description
         }
-        allStrapiArticle(filter: { column: { id: { eq: $id } } }, sort: { fields: publishedAt, order: DESC }) {
+        allStrapiArticle(
+            filter: { column: { id: { eq: $id } } }
+            sort: { fields: publishedAt, order: DESC }
+            skip: $skip
+            limit: $limit
+        ) {
             nodes {
                 id
                 title
