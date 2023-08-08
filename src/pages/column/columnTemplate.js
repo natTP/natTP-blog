@@ -5,13 +5,12 @@ import Pagination from 'components/common/Pagination'
 
 // TODO : sort by views - make a wholly different set of paginated pages for different sorts (will be 2 sets)
 function Column({ data, pageContext }) {
-    console.log(pageContext)
-    const sortStates = [
-        { slug: 'published-at', label: 'วันที่เขียน' },
-        { slug: 'pageviews', label: 'ยอดเข้าชม' },
-    ]
+    // const sortStates = [
+    //     { slug: 'published-at', label: 'วันที่เขียน' },
+    //     { slug: 'pageviews', label: 'ยอดเข้าชม' },
+    // ]
 
-    const [sortStateIndex, setSortStateIndex] = useState(0)
+    // const [sortStateIndex, setSortStateIndex] = useState(0)
 
     const column = data.strapiColumn
     const articles = data.allStrapiArticle.nodes

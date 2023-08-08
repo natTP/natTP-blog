@@ -23,6 +23,7 @@ function Pagination({ pageContext }) {
                 const path = pageNumber === 1 ? pathPrefix : `${pathPrefix}/${pageNumber}`
                 return (
                     <Link
+                        key={pageNumber}
                         to={path}
                         className={`px-3 rounded-full hover:bg-neutral-100 focus:ring ring-neutral-200 ${
                             pageNumber === humanPageNumber ? ' text-amethyst-500 bg-neutral-100' : 'text-neutral-700'

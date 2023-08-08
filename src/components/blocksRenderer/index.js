@@ -26,14 +26,14 @@ function BlocksRenderer({ blocks }) {
             {blocks.map((block, index) => {
                 if (index === 0) {
                     return (
-                        <>
+                        <span key={`${index}${block.__typename}`}>
                             <Block key={`${index}${block.__typename}`} block={block} />
                             <TableOfContents
                                 blocks={blocks}
                                 expandable
                                 className='block md:hidden bg-neutral-100 px-8 py-4 rounded'
                             />
-                        </>
+                        </span>
                     )
                 }
                 return <Block key={`${index}${block.__typename}`} block={block} />
