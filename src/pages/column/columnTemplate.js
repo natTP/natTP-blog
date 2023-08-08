@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import ArticleCard from 'components/card/ArticleCard'
 import Pagination from 'components/common/Pagination'
 
-// TODO : sort by views - make a wholly different set of paginated pages for different sorts (will be 2 sets)
 function Column({ data, pageContext }) {
     // const sortStates = [
     //     { slug: 'published-at', label: 'วันที่เขียน' },

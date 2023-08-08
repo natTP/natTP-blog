@@ -44,10 +44,45 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const columns = result.data.allStrapiColumn.nodes;
 
   if (tags.length > 0) {
-    tags.forEach((tag) => {
-      createPage({
-        path: `/tag/${stringToSlug(tag.title)}`,
+    tags.forEach(async (tag) => {
+      const articles = await graphql(
+        `
+          query ($id: String) {
+            allStrapiArticle(
+              filter: { tags: { elemMatch: { id: { eq: $id } } } }
+              sort: { fields: publishedAt, order: DESC }
+            ) {
+              nodes {
+                id
+                title
+                slug
+              }
+            }
+          }
+        `,
+        { id: tag.id }
+      );
+
+      if (result.errors) {
+        reporter.panicOnBuild(
+          `Error while running GraphQL query.`,
+          result.errors
+        );
+        return;
+      }
+
+      console.log(articles.data.allStrapiArticle.nodes);
+
+      paginate({
+        createPage,
+        items: articles.data.allStrapiArticle.nodes,
+        itemsPerPage: 9,
+        pathPrefix: `/tag/${stringToSlug(tag.title)}`,
         component: tagTemplate,
+        context: {
+          id: tag.id,
+          pathPrefix: `/tag/${stringToSlug(tag.title)}`,
+        },
       });
     });
   }
