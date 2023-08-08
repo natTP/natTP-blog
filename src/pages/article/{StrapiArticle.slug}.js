@@ -22,7 +22,8 @@ import { getRandCombination } from 'utils/randUtils'
 // TODO : Cover image parallax
 function Article({ data }) {
     const article = data.strapiArticle
-    const nextArticles = getRandCombination(data.allStrapiArticle.nodes, 3)
+    const nextArticlesPool = data.allStrapiArticle.nodes.filter((nextArticle) => nextArticle.id !== article.id)
+    const nextArticles = getRandCombination(nextArticlesPool, 3)
 
     return (
         <div className='grid grid-cols-5 gap-6'>
@@ -115,6 +116,7 @@ function Article({ data }) {
 export const query = graphql`
     query ($id: String) {
         strapiArticle(id: { eq: $id }) {
+            id
             title
             slug
             publishedAt
