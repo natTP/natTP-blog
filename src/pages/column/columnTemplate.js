@@ -21,6 +21,9 @@ function Column({ data, pageContext }) {
                 <div>
                     <span className='font-loopless text-sm text-neutral-500'>คอลัมน์</span>
                     <h1 className='font-decorative font-normal text-4xl uppercase text-gradient'>{column.title}</h1>
+                    <span className='font-loopless font-medium text-base leading-10 text-gradient opacity-70'>
+                        {column.tagline}
+                    </span>
                 </div>
                 <p className='mt-4 font-loopless text-body text-neutral-700'>{column.description}</p>
             </section>
@@ -52,6 +55,7 @@ export const query = graphql`
     query ($id: String, $skip: Int, $limit: Int) {
         strapiColumn(id: { eq: $id }) {
             title
+            tagline
             description
         }
         allStrapiArticle(

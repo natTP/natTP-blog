@@ -9,6 +9,7 @@ function DropdownMenu({ className }) {
                     title
                     id
                     slug
+                    tagline
                 }
             }
         }
@@ -22,9 +23,13 @@ function DropdownMenu({ className }) {
             {categories.map((category) => (
                 <li
                     key={category.id}
-                    className='px-4 py-2 md:py-3 w-full font-loopless font-regular cursor-pointer text-neutral-500 hover:bg-neutral-200 focus:bg-neutral-300'
+                    className='px-4 py-2 md:py-3 w-full max-w-[280px] font-loopless font-regular cursor-pointer text-neutral-500 hover:bg-neutral-200 focus:bg-neutral-300'
                 >
-                    <Link to={`/column/${category.slug}`}>{category.title}</Link>
+                    <Link to={`/column/${category.slug}`}>
+                        {category.title}
+                        <br />
+                        <span className='text-sm opacity-70'>{category.tagline}</span>
+                    </Link>
                 </li>
             ))}
         </ul>
