@@ -29,7 +29,7 @@ function Socials({
 
     if (username) {
         return (
-            <ul className={`flex flex-col gap-${gap} ${className}`}>
+            <ul className={`flex flex-row gap-x-${gap} gap-y-2 flex-wrap ${className}`}>
                 {socials.map((item) => (
                     <li key={item.id} className='group transition-all ease-in duration-300'>
                         <a href={item.link} target='_blank'>

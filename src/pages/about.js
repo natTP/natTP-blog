@@ -29,11 +29,26 @@ function About({ data }) {
                         <p className='font-loopless font-normal text-neutral-500'>{author.description}</p>
                     </div>
                 </section>
+                <Socials username socials={author.socials} gap={6} />
                 <article className='col-span-5'>
                     <BlocksRenderer blocks={blocks || []} />
                 </article>
             </section>
-            <Socials username socials={author.socials} gap={2} className='col-span-2 mt-4' />
+            <section className='col-span-2 mt-4'>
+                <iframe
+                    src='https://widgets.sociablekit.com/instagram-feed/iframe/178210'
+                    frameBorder='0'
+                    width='100%'
+                    height='500'
+                ></iframe>
+            </section>
+            {/* <iframe
+                src='https://widgets.sociablekit.com/twitter-feed/iframe/178211'
+                frameBorder='0'
+                width='100%'
+                height='500'
+                className='lg:col-span-full'
+            ></iframe> */}
         </div>
     )
 }
