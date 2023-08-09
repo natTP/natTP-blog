@@ -36,9 +36,10 @@ function TableOfContents({ blocks, expandable, className }) {
     }
 
     if (scrollPosition > 90) return null
+    if (contents.length < 1) return null
 
     return (
-        <nav className={`h-fit max-h-screen ${className} ${expandable ? '' : 'overflow-auto'} row-span-1`}>
+        <nav className={`h-fit max-h-screen my-4 ${className} ${expandable ? '' : 'overflow-auto'} row-span-1`}>
             <div className='flex items-baseline gap-2'>
                 <h2 className='font-decorative text-xl leading-4 uppercase text-neutral-300'>Table of Contents</h2>
 
