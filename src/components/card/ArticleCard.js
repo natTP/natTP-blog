@@ -10,8 +10,13 @@ import { Link } from 'gatsby'
 function ArticleCard({ article, small, showColumn = true, className }) {
     if (small) {
         return (
-            <div className={`${className} grid grid-cols-6 gap-4 items-center`}>
-                <Link to={`/article/${article.slug}`} className='col-span-2 xs:col-span-1'>
+            <div className={`group/card ${className} grid grid-cols-6 gap-4 items-center`}>
+                <Link
+                    to={`/article/${article.slug}`}
+                    className='col-span-2 xs:col-span-1 group-hover/card:drop-shadow-2xl
+                    group-hover/card:scale-105 group-hover/card:translate-y-1 group-hover/card:rotate-6
+                    transition-transform ease-out duration-500'
+                >
                     <GatsbyImage
                         image={getImage(article.cover.localFile)}
                         alt={article.cover.alternativeText}
@@ -45,8 +50,13 @@ function ArticleCard({ article, small, showColumn = true, className }) {
     }
 
     return (
-        <div className={`${className} grid grid-cols-1 xs:grid-cols-3 md:grid-cols-1 gap-6 self-start`}>
-            <Link to={`/article/${article.slug}`}>
+        <div className={`group/card ${className} grid grid-cols-1 xs:grid-cols-3 md:grid-cols-1 gap-6 self-start`}>
+            <Link
+                to={`/article/${article.slug}`}
+                className='group-hover/card:drop-shadow-2xl
+                group-hover/card:scale-105 group-hover/card:translate-y-1 group-hover/card:rotate-3
+                transition-transform ease-out duration-500'
+            >
                 <GatsbyImage
                     image={getImage(article.cover.localFile)}
                     alt={article.cover.alternativeText}

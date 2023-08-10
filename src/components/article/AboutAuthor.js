@@ -5,8 +5,8 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 function AboutAuthor({ author, className }) {
     return (
-        <section className={`grid grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-8 items-center ${className}`}>
-            <Link to='/about'>
+        <section className={`group grid grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-8 items-center ${className}`}>
+            <Link to='/about' className='group-hover:drop-shadow-2xl'>
                 <GatsbyImage
                     image={getImage(author.avatar.localFile)}
                     alt={author.avatar.alternativeText}
