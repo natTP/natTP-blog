@@ -7,6 +7,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { getRandInt } from 'utils/randUtils'
 import { stringToSlug } from 'utils/slugUtils'
+import usePrevious from 'hooks/usePrevious'
+
+function TagDisplay({ tag }) {
+    return (
+        <Link
+            to={`/tag/${stringToSlug(tag.title)}`}
+            className='py-4 font-decorative leading-relaxed text-3xl 2xs:text-4xl sm:text-6xl text-gradient uppercase 
+            hover:text-amethyst-300 focus:text-amethyst-500 animate-pachinko'
+        >
+            #{tag.title}
+        </Link>
+    )
+}
 
 function ColumnSection({ column }) {
     const articles = column.articles.slice(-5)
@@ -33,11 +46,12 @@ function Home({ data }) {
     const columns = data.allStrapiColumn.nodes
 
     const [tagIdx, setTagIdx] = useState(getRandInt(0, tags.length - 1))
+    const prevTagIdx = usePrevious(tagIdx)
 
     useEffect(() => {
         const interval = setInterval(() => {
             setTagIdx((tagIdx) => getRandInt(0, tags.length - 1, tagIdx))
-        }, 2000)
+        }, 4000)
         return () => clearInterval(interval)
     }, [])
 
@@ -48,14 +62,24 @@ function Home({ data }) {
                     className='h-[60vh] md:h-max col-span-full flex flex-col gap-6 justify-end
                 transition-all ease-out duration-500'
                 >
-                    <h1 className='text-5xl sm:text-6xl text-neutral-900'>
+                    <h1
+                        className='flex flex-col lg:flex-row gap-2 lg:gap-4 lg:items-center
+                        text-5xl sm:text-6xl text-neutral-900'
+                    >
                         i write about{' '}
-                        <Link
-                            to={`/tag/${stringToSlug(tags[tagIdx].title)}`}
-                            className='font-decorative text-gradient uppercase hover:drop-shadow-2xl focus:text-amethyst-500'
-                        >
-                            #{tags[tagIdx].title}
-                        </Link>
+                        <span className='relative flex flex-col h-16 sm:h-24 overflow-hidden'>
+                            <TagDisplay key={`current${tags[tagIdx].id}`} tag={tags[tagIdx]} />
+                            {tags.map((tag) => (
+                                <TagDisplay key={tag.id} tag={tag} />
+                            ))}
+                            <TagDisplay key={`prev${tags[prevTagIdx || 0].id}`} tag={tags[prevTagIdx || 0]} />
+                            {/* <span
+                                className='absolute h-16 sm:h-24 w-full text-transparent 
+                                bg-gradient-to-b from-white via-transparent to-white'
+                            >
+                                #
+                            </span> */}
+                        </span>
                     </h1>
                     <div className='font-loopless text-base xs:text-xl text-neutral-500'>
                         วาด เขียน โค้ด บทความจากปลายปากกา

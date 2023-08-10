@@ -56,11 +56,24 @@ module.exports = {
       animation: {
         "wave-front": "wave 4s cubic-bezier(.37,.44,.64,.54) infinite",
         "wave-back": "wave 6s cubic-bezier(.37,.44,.64,.54) infinite",
+        pachinko: "scroll 4s ease-in-out infinite",
       },
       keyframes: {
         wave: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
+        },
+        scroll: {
+          // TODO have to chamge translate by the number of fetched tags + 1 somehow
+          "0%": {
+            transform: "translateY(-1100%)",
+          },
+          "50%": {
+            transform: "translateY(-1100%)",
+          },
+          "100%": {
+            transform: "translateY(0%)",
+          },
         },
       },
       typography: ({ theme }) => ({
