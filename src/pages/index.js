@@ -48,6 +48,10 @@ function Home({ data }) {
     const [tagIdx, setTagIdx] = useState(getRandInt(0, tags.length - 1))
     const prevTagIdx = usePrevious(tagIdx)
 
+    const displayTagsIdx = Array.from({ length: 25 }, () => getRandInt(0, tags.length - 1))
+
+    console.log(displayTagsIdx)
+
     useEffect(() => {
         const interval = setInterval(() => {
             setTagIdx((tagIdx) => getRandInt(0, tags.length - 1, tagIdx))
@@ -68,17 +72,11 @@ function Home({ data }) {
                     >
                         i write about{' '}
                         <span className='relative flex flex-col h-16 sm:h-24 overflow-hidden'>
-                            <TagDisplay key={`current${tags[tagIdx].id}`} tag={tags[tagIdx]} />
-                            {tags.map((tag) => (
-                                <TagDisplay key={tag.id} tag={tag} />
+                            <TagDisplay key={`current-${tags[tagIdx].id}`} tag={tags[tagIdx]} />
+                            {displayTagsIdx.map((displayTagIdx, idx) => (
+                                <TagDisplay key={`${idx}-${tags[displayTagIdx].id}`} tag={tags[displayTagIdx]} />
                             ))}
-                            <TagDisplay key={`prev${tags[prevTagIdx || 0].id}`} tag={tags[prevTagIdx || 0]} />
-                            {/* <span
-                                className='absolute h-16 sm:h-24 w-full text-transparent 
-                                bg-gradient-to-b from-white via-transparent to-white'
-                            >
-                                #
-                            </span> */}
+                            <TagDisplay key={`prev-${tags[prevTagIdx || 0].id}`} tag={tags[prevTagIdx || 0]} />
                         </span>
                     </h1>
                     <div className='font-loopless text-base xs:text-xl text-neutral-500'>
