@@ -1,10 +1,12 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+import React, { useEffect, useState } from 'react'
+import { Link, graphql } from 'gatsby'
+import Wave from 'assets/wave.svg'
 import ArticleCard from 'components/card/ArticleCard'
 import ClickableColumnName from 'components/article/ClickableColumnName'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
-import Wave from 'assets/wave.svg'
+import { getRandInt } from 'utils/randUtils'
+import { stringToSlug } from 'utils/slugUtils'
 
 function ColumnSection({ column }) {
     const articles = column.articles.slice(-5)
@@ -26,15 +28,34 @@ function ColumnSection({ column }) {
 }
 
 function Home({ data }) {
+    const tags = data.allStrapiTag.nodes
     const featuredArticles = data.allStrapiFeatured.nodes[0].articles
     const columns = data.allStrapiColumn.nodes
+
+    const [tagIdx, setTagIdx] = useState(getRandInt(0, tags.length - 1))
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTagIdx((tagIdx) => getRandInt(0, tags.length - 1, tagIdx))
+        }, 2000)
+        return () => clearInterval(interval)
+    }, [])
 
     return (
         <>
             <section className='min-h-[75vh] py-8 grid grid-cols-6 gap-x-6 gap-y-10 items-end'>
-                <header className='h-[60vh] md:h-max col-span-full flex flex-col gap-6 justify-end'>
+                <header
+                    className='h-[60vh] md:h-max col-span-full flex flex-col gap-6 justify-end
+                transition-all ease-out duration-500'
+                >
                     <h1 className='text-5xl sm:text-6xl text-neutral-900'>
-                        i write about <span className='font-decorative text-gradient uppercase'>#something long</span>
+                        i write about{' '}
+                        <Link
+                            to={`/tag/${stringToSlug(tags[tagIdx].title)}`}
+                            className='font-decorative text-gradient uppercase hover:drop-shadow-2xl focus:text-amethyst-500'
+                        >
+                            #{tags[tagIdx].title}
+                        </Link>
                     </h1>
                     <div className='font-loopless text-base xs:text-xl text-neutral-500'>
                         วาด เขียน โค้ด บทความจากปลายปากกา
@@ -91,6 +112,12 @@ function Home({ data }) {
 
 export const query = graphql`
     query {
+        allStrapiTag(limit: 50, sort: { fields: updatedAt, order: DESC }) {
+            nodes {
+                title
+                id
+            }
+        }
         allStrapiFeatured {
             nodes {
                 articles {

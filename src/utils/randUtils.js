@@ -1,4 +1,10 @@
-export const getRandInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+export const getRandInt = (min, max, exclude) => {
+    let res
+    do {
+        res = Math.floor(Math.random() * (max - min + 1) + min)
+    } while (res === exclude)
+    return res
+}
 
 export const getRandCombination = (arr, combinationLen) => {
     let arrCopy = arr.slice()
