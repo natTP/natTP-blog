@@ -1,49 +1,166 @@
 import React from 'react'
+import { graphql } from 'gatsby'
+import ArticleCard from 'components/card/ArticleCard'
+import ClickableColumnName from 'components/article/ClickableColumnName'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import Wave from 'assets/wave.svg'
 
-function Home() {
+function ColumnSection({ column }) {
+    const articles = column.articles.slice(-5)
+
     return (
-        <div className='grid grid-cols-5 gap-6'>
-            <div className='col-span-full md:col-span-3 flex flex-col gap-4'>
-                <h1 className='text-gradient p-1'>
-                    Character Voice คืออะไร วิธีใช้ยกระดับสำนวนการเขียนให้ฟังดูมีชีวิต!
-                </h1>
-                <p className='font-looped text-body tracking-wide w-full text-left'>
-                    อึ๋ม บอดี้เพาเวอร์แชมปิยอง ซากุระซีนีเพล็กซ์ฟรังก์ ไนน์ จ๊อกกี้คันถธุระพล็อตโปรเจกเตอร์เบญจมบพิตร
-                    โกเต็กซ์สะบึมแต๋ว เซอร์โปรเจ็ค พาวเวอร์แจมเพลซซิมโฟนี่ฮากกา คณาญาติโฟล์คไฮแจ็ค เทรนด์หมายปองช็อปปิ้ง
-                    เวณิกามินท์วีเจวิดีโอ เซนเซอร์เฟรม พันธุวิศวกรรมพุดดิ้งลามะชิฟฟอน พาเหรดมั้ง
-                    ออร์แกนแชมเปญต่อยอดโปรดิวเซอร์ วาริชศาสตร์รีเสิร์ช ลาเต้ ตรวจทานลาเต้ไฮบริดวาซาบิแฮปปี้
-                    วินมยุราภิรมย์โอเปอเรเตอร์ตุ๊กตุ๊กจิตพิสัย พุดดิ้งฟรังก์ โค้ก บราอวอร์ดทาวน์เฮาส์มอคคา แจ๊กพ็อต
-                    วอลซ์ ครูเสด จีดีพีไฟต์แอคทีฟ เปียโนเอ็นเตอร์เทนอิสรชนรายชื่อ เอ็กซ์เพรสเดอะสป็อตไวกิ้ง
-                    โกลด์ไนน์เซอร์ไพรส์ ครัวซองมินต์โค้กรีพอร์ทไอเดีย แจ๊กเก็ต แซลมอนสตีลฮีโร่ล้มเหลวเทรนด์
-                    ฟลุตสไปเดอร์บุญคุณว้อดก้า โจ๋พุทธภูมิมาม่า นิรันดร์เฟิร์มเก๊ะ คอลเล็กชั่น
-                </p>
-                <p className='font-looped text-body tracking-wide w-full text-left'>
-                    จอหงวนเปปเปอร์มินต์เช็กคอร์รัปชันเบนโล เจ๊แซ็กโซโฟนลิมิต อุตสาหการไฮไลต์ เฉิ่มไวอะกร้า ไฮกุ
-                    ไบโอพันธุวิศวกรรมวอล์กฮัลโหลถูกต้อง ตอกย้ำพรีเมียมเวณิกาปูอัด แรงดูด ภารตะ บิ๊กโกเต็กซ์ไนน์
-                    เอาท์ดอร์พงษ์ เครป โต๋เต๋พูล รูบิก คาเฟ่ หน่อมแน้มราเม็งแบดอ่วม ศิรินทร์หมั่นโถวโปรดิวเซอร์ เซี้ยว
-                    ไคลแม็กซ์โฟล์ค บ็อกซ์บัลลาสต์คาร์โก้สปายมุมมอง ปาสกาลนู้ด ไวกิ้งมลภาวะจ๊าบนิวส์ แซมบ้าบุ๋น
-                    โต๊ะจีนฟยอร์ดวินซิตี้บลูเบอร์รี่ มอนสเตอร์โปรโมทสแตนเลส ซาร์เพรียวบางก๋ากั่น
-                    มาร์กทาวน์เฮาส์เอ็นจีโอบร็อกโคลี ชาร์ตซัพพลายเออร์ซีดานแอดมิสชัน
-                    วอลนัตคณาญาติล้มเหลววาริชศาสตร์ออเดอร์ ง่าวเย้ว ทริปมอคคา แฟร์ไวกิ้งเจี๊ยว เทียมทานแพ็คแอคทีฟ
-                    สป็อตการันตีซื่อบื้อแฟร์ซูเอี๋ย วีนโบกี้ม็อบเป่ายิงฉุบผู้นำ จังโก้วัคค์จุ๊ยสติกเกอร์
-                    กีวีคอนแทคฟลุคพาสปอร์ตวิทย์ ดอกเตอร์ เมเปิลวืด ล้มเหลว โซนี่ท็อปบู๊ทติงต๊องอิสรชนแจ็กเก็ต สุริยยาตร
-                    ทัวร์ชนะเลิศ ฮิปฮอป
-                </p>
-                {/* <p className='font-looped w-full text-left'>
-                    จอหงวนเปปเปอร์มินต์เช็กคอร์รัปชันเบนโล เจ๊แซ็กโซโฟนลิมิต อุตสาหการไฮไลต์ เฉิ่มไวอะกร้า ไฮกุ
-                    ไบโอพันธุวิศวกรรมวอล์กฮัลโหลถูกต้อง ตอกย้ำพรีเมียมเวณิกาปูอัด แรงดูด ภารตะ บิ๊กโกเต็กซ์ไนน์
-                    เอาท์ดอร์พงษ์ เครป โต๋เต๋พูล รูบิก คาเฟ่ หน่อมแน้มราเม็งแบดอ่วม ศิรินทร์หมั่นโถวโปรดิวเซอร์ เซี้ยว
-                    ไคลแม็กซ์โฟล์ค บ็อกซ์บัลลาสต์คาร์โก้สปายมุมมอง ปาสกาลนู้ด ไวกิ้งมลภาวะจ๊าบนิวส์ แซมบ้าบุ๋น
-                    โต๊ะจีนฟยอร์ดวินซิตี้บลูเบอร์รี่ มอนสเตอร์โปรโมทสแตนเลส ซาร์เพรียวบางก๋ากั่น
-                    มาร์กทาวน์เฮาส์เอ็นจีโอบร็อกโคลี ชาร์ตซัพพลายเออร์ซีดานแอดมิสชัน
-                    วอลนัตคณาญาติล้มเหลววาริชศาสตร์ออเดอร์ ง่าวเย้ว ทริปมอคคา แฟร์ไวกิ้งเจี๊ยว เทียมทานแพ็คแอคทีฟ
-                    สป็อตการันตีซื่อบื้อแฟร์ซูเอี๋ย วีนโบกี้ม็อบเป่ายิงฉุบผู้นำ จังโก้วัคค์จุ๊ยสติกเกอร์
-                    กีวีคอนแทคฟลุคพาสปอร์ตวิทย์ ดอกเตอร์ เมเปิลวืด ล้มเหลว โซนี่ท็อปบู๊ทติงต๊องอิสรชนแจ็กเก็ต สุริยยาตร
-                    ทัวร์ชนะเลิศ ฮิปฮอป
-                </p> */}
+        <article className='py-6 flex flex-col md:grid md:grid-cols-6 gap-x-6 gap-y-8'>
+            <div className='pr-0 md:pr-4 col-span-2 md:col-span-full lg:col-span-2'>
+                <ClickableColumnName column={column} large />
+                <div className='mt-1 font-loopless font-medium text-base text-gradient opacity-70'>
+                    {column.tagline}
+                </div>
+                <p className='mt-4 font-loopless font-regular text-body text-neutral-700'>{column.description}</p>
             </div>
-        </div>
+            {articles.map((article) => (
+                <ArticleCard key={article.id} article={article} className='col-span-2' />
+            ))}
+        </article>
     )
 }
+
+function Home({ data }) {
+    const featuredArticles = data.allStrapiFeatured.nodes[0].articles
+    const columns = data.allStrapiColumn.nodes
+
+    return (
+        <>
+            <section className='min-h-[75vh] py-8 grid grid-cols-6 gap-x-6 gap-y-10 items-end'>
+                <header className='h-[60vh] md:h-max col-span-full flex flex-col gap-6 justify-end'>
+                    <h1 className='text-5xl sm:text-6xl text-neutral-900'>
+                        i write about <span className='font-decorative text-gradient uppercase'>#something long</span>
+                    </h1>
+                    <div className='font-loopless text-base xs:text-xl text-neutral-500'>
+                        วาด เขียน โค้ด บทความจากปลายปากกา
+                        <br className='hidden 2xs:inline' />
+                        ของนักเขียนผู้หลงใหลในวิทย์และสุนทรีย์
+                    </div>
+                </header>
+                <section className='mb-4 col-span-full lg:col-span-3'>
+                    <h2 className='py-4 font-medium text-sm tracking-wide text-neutral-500'>บทความแนะนำ</h2>
+                    <ul className='flex flex-col gap-4'>
+                        {featuredArticles.map((article) => (
+                            <ArticleCard key={article.id} article={article} showColumn={false} small />
+                        ))}
+                    </ul>
+                </section>
+            </section>
+
+            <div
+                className='overflow-hidden
+                        relative left-[50%] right-[50%] ml-[-50vw] mr-[-50vw] max-w-screen w-screen
+                        bottom-[10%] mb-[-10vh]'
+            >
+                <section
+                    className='mt-20 pt-2 pb-40 px-5 md:px-[72px] 2xl:px-[calc((100vw-1392px)/2)] 
+                        flex flex-col bg-neutral-100
+                        relative left-[50%] right-[50%] ml-[-50vw] mr-[-50vw] max-w-screen w-screen
+                        bottom-[10%] mb-[-10vh]'
+                >
+                    <Wave
+                        preserveAspectRatio='none'
+                        className='z-0 absolute top-[-46px] left-0 w-[400vw] lg:w-[200vw] h-[150px] fill-neutral-100 animate-wave-back'
+                    />
+                    <div className='z-10 2xl:px-[72px] flex flex-col gap-6'>
+                        <a href='#all-columns' className='group transition-all ease-in duration-300'>
+                            <h2 id='all-columns' className='text-neutral-500 group-hover:text-neutral-700'>
+                                คอลัมน์ทั้งหมด{' '}
+                                <FontAwesomeIcon
+                                    icon={faArrowDown}
+                                    size='xs'
+                                    className='ml-2 text-neutral-300 group-hover:text-neutral-500 animate-bounce'
+                                />
+                            </h2>
+                        </a>
+
+                        {columns.map((column) => (
+                            <ColumnSection key={column.id} column={column} />
+                        ))}
+                    </div>
+                </section>
+            </div>
+        </>
+    )
+}
+
+export const query = graphql`
+    query {
+        allStrapiFeatured {
+            nodes {
+                articles {
+                    id
+                    title
+                    slug
+                    publishedAt
+                    blocks {
+                        __typename
+                        ... on STRAPI__COMPONENT_SHARED_RICH_TEXT {
+                            childStrapiComponentSharedRichTextBodyTextnode {
+                                childMarkdownRemark {
+                                    fields {
+                                        readingTime {
+                                            minutes
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    cover {
+                        alternativeText
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData(aspectRatio: 1.77, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        allStrapiColumn {
+            nodes {
+                id
+                slug
+                title
+                tagline
+                description
+                articles {
+                    id
+                    title
+                    slug
+                    publishedAt
+                    blocks {
+                        __typename
+                        ... on STRAPI__COMPONENT_SHARED_RICH_TEXT {
+                            childStrapiComponentSharedRichTextBodyTextnode {
+                                childMarkdownRemark {
+                                    fields {
+                                        readingTime {
+                                            minutes
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    cover {
+                        alternativeText
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData(aspectRatio: 1.77, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+`
 
 export default Home

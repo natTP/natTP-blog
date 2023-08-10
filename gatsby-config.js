@@ -121,6 +121,14 @@ module.exports = {
               },
             },
           },
+          {
+            singularName: "featured",
+            queryParams: {
+              populate: {
+                articles: "*",
+              },
+            },
+          },
         ],
       },
     },

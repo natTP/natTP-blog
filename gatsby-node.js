@@ -71,8 +71,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         return;
       }
 
-      console.log(articles.data.allStrapiArticle.nodes);
-
       paginate({
         createPage,
         items: articles.data.allStrapiArticle.nodes,
