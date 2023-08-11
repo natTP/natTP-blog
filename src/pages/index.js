@@ -7,14 +7,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { getRandInt } from 'utils/randUtils'
 import { stringToSlug } from 'utils/slugUtils'
-import usePrevious from 'hooks/usePrevious'
+// import usePrevious from 'hooks/usePrevious'
 
 function TagDisplay({ tag }) {
     return (
         <Link
             to={`/tag/${stringToSlug(tag.title)}`}
-            className='py-4 font-decorative leading-relaxed text-3xl 2xs:text-4xl sm:text-6xl text-gradient uppercase 
-            hover:text-amethyst-300 focus:text-amethyst-500 animate-pachinko'
+            className='py-4 font-decorative leading-relaxed tracking-wider text-3xl 2xs:text-4xl sm:text-6xl text-gradient uppercase 
+            hover:text-amethyst-300 focus:text-amethyst-500 
+            whitespace-nowrap border-r-2 lg:border-r-4 animate-typing'
         >
             #{tag.title}
         </Link>
@@ -46,16 +47,14 @@ function Home({ data }) {
     const columns = data.allStrapiColumn.nodes
 
     const [tagIdx, setTagIdx] = useState(getRandInt(0, tags.length - 1))
-    const prevTagIdx = usePrevious(tagIdx)
+    // const prevTagIdx = usePrevious(tagIdx)
 
-    const displayTagsIdx = Array.from({ length: 25 }, () => getRandInt(0, tags.length - 1))
-
-    console.log(displayTagsIdx)
+    // const displayTagsIdx = Array.from({ length: 25 }, () => getRandInt(0, tags.length - 1))
 
     useEffect(() => {
         const interval = setInterval(() => {
             setTagIdx((tagIdx) => getRandInt(0, tags.length - 1, tagIdx))
-        }, 4000)
+        }, 6000)
         return () => clearInterval(interval)
     }, [])
 
@@ -71,12 +70,13 @@ function Home({ data }) {
                         text-5xl sm:text-6xl text-neutral-900'
                     >
                         i write about{' '}
-                        <span className='relative flex flex-col h-16 sm:h-24 overflow-hidden'>
+                        <span className='relative flex flex-col h-16 sm:h-24 w-fit overflow-hidden'>
                             <TagDisplay key={`current-${tags[tagIdx].id}`} tag={tags[tagIdx]} />
+                            {/* <TagDisplay key={`current-${tags[tagIdx].id}`} tag={tags[tagIdx]} />
                             {displayTagsIdx.map((displayTagIdx, idx) => (
                                 <TagDisplay key={`${idx}-${tags[displayTagIdx].id}`} tag={tags[displayTagIdx]} />
                             ))}
-                            <TagDisplay key={`prev-${tags[prevTagIdx || 0].id}`} tag={tags[prevTagIdx || 0]} />
+                            <TagDisplay key={`prev-${tags[prevTagIdx || 0].id}`} tag={tags[prevTagIdx || 0]} /> */}
                         </span>
                     </h1>
                     <div className='font-loopless text-base xs:text-xl text-neutral-500'>
@@ -134,7 +134,7 @@ function Home({ data }) {
 
 export const query = graphql`
     query {
-        allStrapiTag(limit: 50, sort: { fields: updatedAt, order: DESC }) {
+        allStrapiTag(sort: { fields: updatedAt, order: DESC }) {
             nodes {
                 title
                 id

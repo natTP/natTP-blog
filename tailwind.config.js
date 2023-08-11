@@ -57,6 +57,9 @@ module.exports = {
         "wave-front": "wave 4s cubic-bezier(.37,.44,.64,.54) infinite",
         "wave-back": "wave 6s cubic-bezier(.37,.44,.64,.54) infinite",
         pachinko: "scroll 4s cubic-bezier(.42,0,.4,1) infinite",
+        typing:
+          "typing 6s steps(20, end) infinite, blink 0.75s step-end infinite",
+        blink: "blink 1s step-end infinite",
       },
       keyframes: {
         wave: {
@@ -65,14 +68,30 @@ module.exports = {
         },
         scroll: {
           "0%": {
+            opacity: "100%",
+            transform: "translateY(-2600%)",
+          },
+          "45%": {
+            opacity: "100%",
             transform: "translateY(-2600%)",
           },
           "50%": {
+            opacity: "30%",
             transform: "translateY(-2600%)",
           },
           "100%": {
+            opacity: "100%",
             transform: "translateY(0%)",
           },
+        },
+        typing: {
+          "from, to": { width: "0" },
+          "30%": { width: "100%" },
+          "70%": { width: "100%" },
+        },
+        blink: {
+          "from, to": { "border-color": "white" },
+          "50%": { "border-color": "#6D44C5" },
         },
       },
       typography: ({ theme }) => ({
