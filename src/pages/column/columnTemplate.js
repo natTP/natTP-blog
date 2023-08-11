@@ -19,8 +19,10 @@ function Column({ data, pageContext }) {
             <section className='col-span-full sm:col-span-3'>
                 <div>
                     <span className='font-loopless text-sm text-neutral-500'>คอลัมน์</span>
-                    <h1 className='font-decorative font-normal text-4xl uppercase text-gradient'>{column.title}</h1>
-                    <span className='font-loopless font-medium text-base leading-10 text-gradient opacity-70'>
+                    <h1 className='pb-4 font-decorative font-normal text-4xl uppercase text-gradient'>
+                        {column.title}
+                    </h1>
+                    <span className='font-loopless font-medium text-base text-gradient opacity-70'>
                         {column.tagline}
                     </span>
                 </div>
