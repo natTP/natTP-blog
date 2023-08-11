@@ -23,7 +23,7 @@ function TagDisplay({ tag }) {
 }
 
 function ColumnSection({ column }) {
-    const articles = column.articles.slice(-5)
+    const articles = column.articles.slice(-5).reverse()
 
     return (
         <article className='py-6 flex flex-col md:grid md:grid-cols-6 gap-x-6 gap-y-8'>
@@ -134,7 +134,7 @@ function Home({ data }) {
 
 export const query = graphql`
     query {
-        allStrapiTag(sort: { fields: updatedAt, order: DESC }) {
+        allStrapiTag {
             nodes {
                 title
                 id
@@ -172,7 +172,7 @@ export const query = graphql`
                 }
             }
         }
-        allStrapiColumn {
+        allStrapiColumn(sort: { fields: publishedAt, order: ASC }) {
             nodes {
                 id
                 slug
