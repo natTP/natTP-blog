@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link, graphql } from 'gatsby'
 import Wave from 'assets/wave.svg'
+import Arrow from 'assets/arrow.svg'
 import ArticleCard from 'components/card/ArticleCard'
 import ClickableColumnName from 'components/article/ClickableColumnName'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { getRandInt } from 'utils/randUtils'
 import { stringToSlug } from 'utils/slugUtils'
 // import usePrevious from 'hooks/usePrevious'
@@ -114,11 +113,7 @@ function Home({ data }) {
                         <a href='#all-columns' className='group transition-all ease-in duration-300'>
                             <h2 id='all-columns' className='text-neutral-500 group-hover:text-neutral-700'>
                                 คอลัมน์ทั้งหมด{' '}
-                                <FontAwesomeIcon
-                                    icon={faArrowDown}
-                                    size='xs'
-                                    className='ml-2 text-neutral-300 group-hover:text-neutral-500 animate-bounce'
-                                />
+                                <Arrow className='inline w-5 rotate-90 fill-neutral-300 group-hover:fill-neutral-500' />
                             </h2>
                         </a>
 

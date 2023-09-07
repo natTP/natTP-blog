@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import useHeadingObserver from 'hooks/useHeadingObserver'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
+import Star from 'assets/star.svg'
 import useScrollPosition from 'hooks/useScrollPosition'
 
 function TableOfContents({ blocks, expandable, className }) {
@@ -64,9 +63,7 @@ function TableOfContents({ blocks, expandable, className }) {
                             <a href={`#${item.id}`} className='underline-gradient focus:text-neutral-700'>
                                 {item.value}
                             </a>
-                            {activeId === item.id && (
-                                <FontAwesomeIcon icon={faAsterisk} size='xs' className=' ml-1 text-amethyst-300' />
-                            )}
+                            {activeId === item.id && <Star className='inline w-5 ml-1 fill-amethyst-200' />}
                         </li>
                     ))}
                 </ul>
