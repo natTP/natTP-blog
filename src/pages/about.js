@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Socials from 'components/common/Socials'
 import BlocksRenderer from 'components/blocksRenderer'
+import SEO from 'components/common/SEO'
 
 function About({ data }) {
     const author = data.strapiAbout.author
@@ -76,8 +77,13 @@ export const query = graphql`
             blocks {
                 ...Blocks
             }
+            seo {
+                metaTitle
+            }
         }
     }
 `
 
 export default About
+
+export const Head = ({ data }) => <SEO title={data.strapiAbout.seo.metaTitle} pathname='/about' />

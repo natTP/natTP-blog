@@ -4,6 +4,7 @@ import Wave from 'assets/wave.svg'
 import Arrow from 'assets/arrow.svg'
 import ArticleCard from 'components/card/ArticleCard'
 import ClickableColumnName from 'components/article/ClickableColumnName'
+import SEO from 'components/common/SEO'
 import { getRandInt } from 'utils/randUtils'
 import { stringToSlug } from 'utils/slugUtils'
 // import usePrevious from 'hooks/usePrevious'
@@ -208,3 +209,5 @@ export const query = graphql`
 `
 
 export default Home
+
+export const Head = () => <SEO />

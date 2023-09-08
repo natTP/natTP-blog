@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import ArticleCard from 'components/card/ArticleCard'
 import Pagination from 'components/common/Pagination'
+import SEO from 'components/common/SEO'
 
 function Column({ data, pageContext }) {
     // const sortStates = [
@@ -102,3 +103,10 @@ export const query = graphql`
 `
 
 export default Column
+
+export const Head = ({ data }) => (
+    <SEO
+        title={`${data.strapiColumn.title} ${data.strapiColumn.tagline}`}
+        description={data.strapiColumn.description}
+    />
+)

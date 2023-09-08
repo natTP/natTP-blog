@@ -14,6 +14,7 @@ import AboutAuthor from 'components/article/AboutAuthor'
 import Button from 'components/common/Button'
 import LikeSection from 'components/article/LikeSection'
 import ArticleCard from 'components/card/ArticleCard'
+import SEO from 'components/common/SEO'
 import { dateTimeStringToLocaleDateString } from 'utils/dateUtils'
 import { calculateTotalReadTime } from 'utils/readTimeUtils'
 import { getRandCombination } from 'utils/randUtils'
@@ -123,6 +124,7 @@ export const query = graphql`
             cover {
                 alternativeText
                 localFile {
+                    url
                     childImageSharp {
                         gatsbyImageData(aspectRatio: 1.77, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                     }
@@ -163,6 +165,9 @@ export const query = graphql`
                     }
                 }
             }
+            seo {
+                metaDescription
+            }
         }
         allStrapiArticle(limit: 10, sort: { fields: publishedAt, order: DESC }) {
             nodes {
@@ -202,3 +207,11 @@ export const query = graphql`
 `
 
 export default Article
+
+export const Head = ({ data }) => (
+    <SEO
+        title={data.strapiArticle.title}
+        description={data.strapiArticle.seo.metaDescription}
+        image={data.strapiArticle.cover.localFile.url}
+    />
+)

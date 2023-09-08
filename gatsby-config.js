@@ -5,6 +5,12 @@ require("dotenv").config({
 module.exports = {
   plugins: [
     {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        icon: "src/assets/favicon.png",
+      },
+    },
+    {
       resolve: `gatsby-plugin-page-creator`,
       options: {
         path: `${__dirname}/src/pages`,
@@ -79,6 +85,9 @@ module.exports = {
                 },
                 author: "*",
                 references: "*",
+                seo: {
+                  populate: "*",
+                },
               },
             },
           },
@@ -90,6 +99,9 @@ module.exports = {
             queryParams: {
               populate: {
                 articles: "*",
+                seo: {
+                  populate: "*",
+                },
               },
             },
           },
@@ -98,6 +110,9 @@ module.exports = {
             queryParams: {
               populate: {
                 articles: "*",
+                seo: {
+                  populate: "*",
+                },
               },
             },
           },
@@ -109,6 +124,9 @@ module.exports = {
               populate: {
                 author: "*",
                 blocks: "*",
+                seo: {
+                  populate: "*",
+                },
               },
             },
           },
@@ -117,7 +135,9 @@ module.exports = {
             queryParams: {
               populate: {
                 favicon: "*",
-                defaultSeo: "*",
+                seo: {
+                  populate: "*",
+                },
               },
             },
           },

@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import ArticleCard from 'components/card/ArticleCard'
 import Pagination from 'components/common/Pagination'
+import SEO from 'components/common/SEO'
 
 function Tag({ data, pageContext }) {
     const tag = data.strapiTag
@@ -78,3 +79,5 @@ export const query = graphql`
 `
 
 export default Tag
+
+export const Head = ({ data }) => <SEO title={`บทความที่มีแท็ก ${data.strapiTag.title}`} />
