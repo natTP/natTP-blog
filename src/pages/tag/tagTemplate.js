@@ -12,7 +12,9 @@ function Tag({ data, pageContext }) {
             <section className='col-span-full sm:col-span-3'>
                 <div>
                     <span className='font-loopless text-sm text-neutral-500'>บทความที่มีแท็ก</span>
-                    <h1 className='font-decorative font-normal text-4xl uppercase text-gradient'>#{tag.title}</h1>
+                    <h1 className='font-decorative font-normal text-4xl leading-relaxed uppercase text-gradient'>
+                        #{tag.title}
+                    </h1>
                 </div>
             </section>
 
