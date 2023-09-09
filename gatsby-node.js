@@ -127,3 +127,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   }
 };
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+    type STRAPI__COMPONENT_SHARED_RICH_TEXT implements Node {
+      childStrapiComponentSharedRichTextBodyTextnode : TempMarkdownRemark 
+    }
+    type TempMarkdownRemark {
+      childMarkdownRemark: MarkdownRemark
+    }
+
+    type STRAPI__COMPONENT_SHARED_MEDIA implements Node {
+      caption: String
+    }
+
+    type STRAPI__COMPONENT_SHARED_QUOTE implements Node {
+      body: String
+      title: String
+    }
+
+    type STRAPI__COMPONENT_SHARED_EMBEDDED_VIDEO implements Node {
+      link: String
+    }
+
+    union STRAPI__COMPONENT_SHARED_EMBEDDED_VIDEOSTRAPI__COMPONENT_SHARED_MEDIASTRAPI__COMPONENT_SHARED_QUOTESTRAPI__COMPONENT_SHARED_RICH_TEXTUnion = STRAPI__COMPONENT_SHARED_RICH_TEXT | STRAPI__COMPONENT_SHARED_MEDIA | STRAPI__COMPONENT_SHARED_QUOTE | STRAPI__COMPONENT_SHARED_EMBEDDED_VIDEO
+  `;
+  createTypes(typeDefs);
+};

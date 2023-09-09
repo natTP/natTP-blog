@@ -102,14 +102,16 @@ function Article({ data }) {
                 blocks={article.blocks}
                 className='hidden md:block col-span-2 sticky top-20 px-6 md:mt-[20%]'
             />
-            <section className='mt-14 col-span-full'>
-                <h2 className='text-neutral-700 mb-3'>คุณอาจสนใจ...</h2>
-                <ul className='grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-6 py-5'>
-                    {nextArticles.map((article) => (
-                        <ArticleCard key={article.id} article={article} />
-                    ))}
-                </ul>
-            </section>
+            {nextArticles[0] && (
+                <section className='mt-14 col-span-full'>
+                    <h2 className='text-neutral-700 mb-3'>คุณอาจสนใจ...</h2>
+                    <ul className='grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-6 py-5'>
+                        {nextArticles.map((article) => (
+                            <ArticleCard key={article.id} article={article} />
+                        ))}
+                    </ul>
+                </section>
+            )}
         </div>
     )
 }

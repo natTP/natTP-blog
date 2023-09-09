@@ -5,7 +5,7 @@ function BlockMedia({ data }) {
     const isVideo = data.file.mime.startsWith('video')
 
     return (
-        <figure>
+        <figure className='flex flex-col items-center gap-2'>
             {isVideo ? (
                 <p>ยังไม่สามารถแสดงผลวิดิโอได้</p>
             ) : (
@@ -15,7 +15,7 @@ function BlockMedia({ data }) {
                     className='rounded'
                 />
             )}
-            <figcaption className='mt-2 font-looped text-sm tracking-wide text-neutral-500 text-center'>
+            <figcaption className='font-looped text-sm tracking-wide text-neutral-500 text-center'>
                 {data.caption}
             </figcaption>
         </figure>

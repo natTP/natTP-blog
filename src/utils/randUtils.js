@@ -11,6 +11,8 @@ export const getRandCombination = (arr, combinationLen) => {
 
     let randIdx
     let res = []
+    combinationLen = Math.min(arr.length, combinationLen)
+
     for (let i = 0; i < combinationLen; i++) {
         randIdx = getRandInt(0, arrCopy.length - 1)
         res.push(arrCopy.splice(randIdx, 1)[0])
