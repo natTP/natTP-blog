@@ -41,7 +41,7 @@ function Navbar() {
                 </Link>
                 <FontAwesomeIcon
                     icon={isMenuOpen ? faMinus : faBars}
-                    className='block md:hidden text-neutral-500 cursor-pointer hover:text-neutral-700'
+                    className='block md:invisible text-neutral-500 cursor-pointer hover:text-neutral-700'
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                 />
                 <nav
