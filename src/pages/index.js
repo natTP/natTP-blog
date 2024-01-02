@@ -7,13 +7,14 @@ import ClickableColumnName from 'components/article/ClickableColumnName'
 import SEO from 'components/common/SEO'
 import { getRandInt } from 'utils/randUtils'
 import { stringToSlug } from 'utils/slugUtils'
+import LandingArt from 'components/art/LandingArt'
 // import usePrevious from 'hooks/usePrevious'
 
 function TagDisplay({ tag }) {
     return (
         <Link
             to={`/tag/${stringToSlug(tag.title)}`}
-            className='py-4 font-decorative leading-relaxed tracking-wider text-3xl 2xs:text-4xl sm:text-6xl text-gradient uppercase 
+            className='py-4 font-decorative leading-relaxed tracking-wider text-3xl 3xs:text-4xl sm:text-6xl text-gradient uppercase 
             hover:text-amethyst-300 focus:text-amethyst-500 
             whitespace-nowrap border-r-2 lg:border-r-4 animate-typing'
         >
@@ -60,9 +61,13 @@ function Home({ data }) {
 
     return (
         <>
+            <LandingArt
+                className='w-screen relative left-[50%] right-[50%] mt-[-32px] ml-[-50vw] mr-[-50vw] mb-24 2xs:mb-10
+                sm:w-11/12 sm:ml-[-20%] sm:mr-[20%] sm:pt-[-48px]'
+            />
             <section className='min-h-[75vh] py-8 grid grid-cols-6 gap-x-6 gap-y-10 items-end'>
                 <header
-                    className='h-[60vh] md:h-max col-span-full flex flex-col gap-6 justify-end
+                    className='h-[55vh] md:h-max col-span-full flex flex-col gap-6 justify-end z-10
                 transition-all ease-out duration-500'
                 >
                     <h1
@@ -81,11 +86,11 @@ function Home({ data }) {
                     </h1>
                     <div className='font-loopless text-base xs:text-xl text-neutral-500'>
                         วาด เขียน โค้ด บทความจากปลายปากกา
-                        <br className='hidden 2xs:inline' />
+                        <br className='hidden 3xs:inline' />
                         ของนักเขียนผู้หลงใหลในวิทย์และสุนทรีย์
                     </div>
                 </header>
-                <section className='mb-4 col-span-full lg:col-span-3'>
+                <section className='mb-4 col-span-full lg:col-span-3 z-10'>
                     <h2 className='py-4 font-medium text-sm tracking-wide text-neutral-500'>บทความแนะนำ</h2>
                     <ul className='flex flex-col gap-4'>
                         {featuredArticles.map((article) => (

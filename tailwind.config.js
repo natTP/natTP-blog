@@ -40,7 +40,8 @@ module.exports = {
     },
     extend: {
       screens: {
-        "2xs": "320px",
+        "3xs": "320px",
+        "2xs": "380px",
         xs: "424px",
       },
       fontSize: {
@@ -60,6 +61,7 @@ module.exports = {
         typing:
           "typing 6s steps(20, end) infinite, blink 0.75s step-end infinite",
         blink: "blink 1s step-end infinite",
+        fall: "fall 12s ease-in-out infinite",
       },
       keyframes: {
         wave: {
@@ -90,8 +92,42 @@ module.exports = {
           "70%": { width: "100%" },
         },
         blink: {
-          "from, to": { "border-color": "white" },
+          "from, to": { "border-color": "transparent" },
           "50%": { "border-color": "#6D44C5" },
+        },
+        fall: {
+          "0%": {
+            transform: "translateY(-5%) rotate(5deg)",
+          },
+          "25%": {
+            transform: "translateY(0%) rotate(10deg)",
+          },
+          "50%": {
+            transform: "translateY(-5%) rotate(3deg)",
+          },
+          "75%": {
+            transform: "translateY(0%) rotate(7deg)",
+          },
+          "100%": {
+            transform: "translateY(-5%) rotate(5deg)",
+          },
+        },
+        "fall-straight": {
+          "0%": {
+            transform: "translateY(-5%)",
+          },
+          "20%": {
+            transform: "translateY(0%)",
+          },
+          "40%": {
+            transform: "translateY(-2%)",
+          },
+          "60%": {
+            transform: "translateY(0%)",
+          },
+          "100%": {
+            transform: "translateY(-5%)",
+          },
         },
       },
       typography: ({ theme }) => ({
