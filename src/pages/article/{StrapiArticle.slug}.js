@@ -19,8 +19,6 @@ import { dateTimeStringToLocaleDateString } from 'utils/dateUtils'
 import { calculateTotalReadTime } from 'utils/readTimeUtils'
 import { getRandCombination } from 'utils/randUtils'
 
-// TODO : Views (from analytics)
-// TODO : Cover image parallax
 function Article({ data }) {
     const article = data.strapiArticle
     const nextArticlesPool = data.allStrapiArticle.nodes.filter((nextArticle) => nextArticle.id !== article.id)

@@ -24,10 +24,10 @@ function LikeSection({ className, articleId }) {
                             />
                             {totalClaps}
                         </span>
-                        <span className='max-w-fit font-loopless font-normal text-lg text-neutral-500'>
+                        {/* <span className='max-w-fit font-loopless font-normal text-lg text-neutral-500'>
                             <FontAwesomeIcon icon={faEye} className='mr-1.5' />
                             1.2k
-                        </span>
+                        </span> */}
                     </span>
                     <span className='grow flex flex-wrap gap-4 justify-end items-center'>
                         <span className='font-loopless text-neutral-500'>

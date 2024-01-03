@@ -47,27 +47,31 @@ function TableOfContents({ blocks, expandable, className }) {
                         onClick={() => setIsExpanded(!isExpanded)}
                         className='font-loopless font-medium text-sm text-neutral-500 underline-link'
                     >
-                        [{isExpanded ? 'Hide' : 'Show'}]
+                        [{isExpanded ? 'ซ่อน' : 'แสดง'}]
                     </button>
                 )}
             </div>
-            {isExpanded && (
-                <ul className='my-4 font-loopless font-medium text-body tracking-wide'>
-                    {contents.map((item) => (
-                        <li
-                            key={`${item.depth}-${item.id}`}
-                            className={`group w-fit
+
+            <ul
+                className={`font-loopless font-medium text-body tracking-wide 
+                    ${
+                        isExpanded ? 'max-h-[4048px]' : 'max-h-0'
+                    } overflow-hidden transition-[max-height] ease-in-out duration-1000`}
+            >
+                {contents.map((item) => (
+                    <li
+                        key={`${item.depth}-${item.id}`}
+                        className={`group w-fit
                         ${calculateMargin(item.depth)}
 						${activeId === item.id ? 'font-bold text-gradient' : 'text-neutral-500'}`}
-                        >
-                            <a href={`#${item.id}`} className='underline-gradient focus:text-neutral-700'>
-                                {item.value}
-                            </a>
-                            {activeId === item.id && <Star className='inline w-5 ml-1 fill-amethyst-200' />}
-                        </li>
-                    ))}
-                </ul>
-            )}
+                    >
+                        <a href={`#${item.id}`} className='underline-gradient focus:text-neutral-700'>
+                            {item.value}
+                        </a>
+                        {activeId === item.id && <Star className='inline w-5 ml-1 fill-amethyst-200' />}
+                    </li>
+                ))}
+            </ul>
         </nav>
     )
 }
