@@ -58,6 +58,7 @@ function Navbar() {
                                         <button
                                             className='font-medium text-neutral-500 underline-gradient focus:text-neutral-700'
                                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                            onMouseEnter={() => setIsDropdownOpen(true)}
                                         >
                                             <span className='font-loopless mr-2'>{item.label}</span>
                                             <FontAwesomeIcon
@@ -65,12 +66,22 @@ function Navbar() {
                                                 size='xs'
                                             />
                                         </button>
-                                        {isDropdownOpen && <DropdownMenu className='md:absolute md:top-8 z-10' />}
+                                        {isDropdownOpen && (
+                                            <DropdownMenu
+                                                className='md:absolute md:top-8 z-10'
+                                                setIsDropdownOpen={setIsDropdownOpen}
+                                                setIsMenuOpen={setIsMenuOpen}
+                                            />
+                                        )}
                                     </div>
                                 ) : (
                                     <Link
                                         to={item.to}
                                         className='font-loopless font-medium text-neutral-500 underline-gradient focus:text-neutral-700'
+                                        onClick={() => {
+                                            setIsDropdownOpen(false)
+                                            setIsMenuOpen(false)
+                                        }}
                                     >
                                         {item.label}
                                     </Link>

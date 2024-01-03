@@ -55,6 +55,7 @@ module.exports = {
         body: ["1rem", "1.8125rem"],
       },
       animation: {
+        appear: "appear .5s ease-in-out forwards var(--delay, 0)",
         "wave-front": "wave 4s cubic-bezier(.37,.44,.64,.54) infinite",
         "wave-back": "wave 6s cubic-bezier(.37,.44,.64,.54) infinite",
         pachinko: "scroll 4s cubic-bezier(.42,0,.4,1) infinite",
@@ -64,6 +65,10 @@ module.exports = {
         fall: "fall 12s ease-in-out infinite",
       },
       keyframes: {
+        appear: {
+          "0%": { opacity: "0%", transform: "scale(0.6) translateY(-4px))" },
+          "100%": { opacity: "100%" },
+        },
         wave: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
