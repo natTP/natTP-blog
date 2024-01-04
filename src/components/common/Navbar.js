@@ -57,8 +57,8 @@ function Navbar() {
                                     <div className='relative'>
                                         <button
                                             className='font-medium text-neutral-500 underline-gradient focus:text-neutral-700'
-                                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                             onMouseEnter={() => setIsDropdownOpen(true)}
+                                            onTouchEnd={() => setIsDropdownOpen(!isDropdownOpen)}
                                         >
                                             <span className='font-loopless mr-2'>{item.label}</span>
                                             <FontAwesomeIcon
