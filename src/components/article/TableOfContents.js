@@ -3,7 +3,7 @@ import useHeadingObserver from 'hooks/useHeadingObserver'
 import Star from 'assets/star.svg'
 import useScrollPosition from 'hooks/useScrollPosition'
 
-function TableOfContents({ blocks, expandable, className }) {
+function TableOfContents({ blocks, expandable, hidden = false, className }) {
     const activeId = useHeadingObserver()
     const scrollPosition = useScrollPosition()
     const [isExpanded, setIsExpanded] = useState(true)
@@ -38,7 +38,11 @@ function TableOfContents({ blocks, expandable, className }) {
     if (contents.length < 1) return null
 
     return (
-        <nav className={`h-fit max-h-screen my-4 ${className} ${expandable ? '' : 'overflow-auto'} row-span-1`}>
+        <nav
+            className={`${hidden ? 'hidden' : ''} h-fit max-h-screen my-4 ${className} ${
+                expandable ? '' : 'overflow-auto'
+            } row-span-1`}
+        >
             <div className='flex items-baseline gap-2'>
                 <h2 className='font-decorative text-xl leading-4 uppercase text-neutral-300'>Table of Contents</h2>
 

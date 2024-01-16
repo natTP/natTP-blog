@@ -20,7 +20,8 @@ const Block = ({ block }) => {
     return <Component data={block} />
 }
 
-function BlocksRenderer({ blocks }) {
+function BlocksRenderer({ blocks, isHideTableOfContents = false }) {
+    console.log(isHideTableOfContents)
     return (
         <div className='flex flex-col gap-5'>
             {blocks.map((block, index) => {
@@ -31,6 +32,7 @@ function BlocksRenderer({ blocks }) {
                             <TableOfContents
                                 blocks={blocks}
                                 expandable
+                                hidden={isHideTableOfContents}
                                 className='block md:hidden bg-neutral-100 px-8 py-4 rounded'
                             />
                         </span>

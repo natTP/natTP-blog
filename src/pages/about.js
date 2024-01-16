@@ -32,7 +32,7 @@ function About({ data }) {
                 </section>
                 <Socials username socials={author.socials} gap={6} />
                 <article className='col-span-5'>
-                    <BlocksRenderer blocks={blocks || []} />
+                    <BlocksRenderer blocks={blocks || []} isHideTableOfContents={true} />
                 </article>
             </section>
             <section className='col-span-2 mt-4'>
