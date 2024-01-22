@@ -3,12 +3,18 @@ require("dotenv").config({
 });
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://blog.nattp.page/`,
+  },
   plugins: [
     {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/assets/favicon.png",
       },
+    },
+    {
+      resolve: "gatsby-plugin-sitemap",
     },
     {
       resolve: `gatsby-plugin-page-creator`,
