@@ -18,6 +18,11 @@ module.exports = {
       options: {
         query: `
         {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
           allSitePage {
             nodes {
               path
