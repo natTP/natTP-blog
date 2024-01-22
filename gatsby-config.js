@@ -53,18 +53,12 @@ module.exports = {
           return pages;
         },
         serialize: ({ path, date }) => {
-          let entry = {
+          return {
             url: path,
             changefreq: "daily",
-            priority: 0.5,
+            priority: 0.7,
+            lastmod: date,
           };
-
-          if (date) {
-            entry.priority = 0.7;
-            entry.lastmod = date;
-          }
-
-          return entry;
         },
       },
     },
