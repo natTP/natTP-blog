@@ -15,6 +15,54 @@ module.exports = {
     },
     {
       resolve: "gatsby-plugin-sitemap",
+      options: {
+        query: `
+        {
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+          allStrapiArticle {
+            nodes {
+              updatedAt
+              slug
+            }
+          }
+        }
+      `,
+        resolveSiteUrl: () => siteUrl,
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+          allStrapiArticle: { nodes: allPosts },
+        }) => {
+          const pathToDateMap = {};
+
+          allPosts.map((post) => {
+            pathToDateMap[post.slug] = { date: post.updatedAt };
+          });
+
+          const pages = allPages.map((page) => {
+            return { ...page, ...pathToDateMap[page.path] };
+          });
+
+          return pages;
+        },
+        serialize: ({ path, date }) => {
+          let entry = {
+            url: path,
+            changefreq: "daily",
+            priority: 0.5,
+          };
+
+          if (date) {
+            entry.priority = 0.7;
+            entry.lastmod = date;
+          }
+
+          return entry;
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-page-creator`,
