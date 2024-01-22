@@ -52,7 +52,7 @@ module.exports = {
 
           return pages;
         },
-        serialize: ({ path, date }) => {
+        serialize: ({ path, updatedAt }) => {
           return {
             url: path,
             changefreq: "daily",
