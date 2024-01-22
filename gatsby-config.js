@@ -42,22 +42,30 @@ module.exports = {
         }) => {
           const pathToDateMap = {};
 
+          console.log("--------------", allPosts);
+
           allPosts.map((post) => {
-            pathToDateMap[post.slug] = { date: post.updatedAt };
+            const slug = "/article/" + post.slug + "/";
+            pathToDateMap[slug] = { date: post.updatedAt };
           });
+
+          console.log("--------------", pathToDateMap);
 
           const pages = allPages.map((page) => {
             return { ...page, ...pathToDateMap[page.path] };
           });
 
+          console.log("--------------", pages);
+
           return pages;
         },
-        serialize: ({ path, updatedAt }) => {
+        serialize: ({ path, date }) => {
+          console.log("--------------", path, date);
           return {
             url: path,
             changefreq: "daily",
             priority: 0.7,
-            lastmod: updatedAt,
+            lastmod: date,
           };
         },
       },
