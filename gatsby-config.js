@@ -31,7 +31,6 @@ module.exports = {
           }
         }
       `,
-        resolveSiteUrl: () => siteUrl,
         resolvePages: ({
           allSitePage: { nodes: allPages },
           allStrapiArticle: { nodes: allPosts },
