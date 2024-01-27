@@ -24,7 +24,9 @@ function AboutAuthor({ author, className }) {
                     </h3>
                     <Socials gap={2} color={{ default: 'text-neutral-300', hover: 'text-neutral-700' }} />
                 </div>
-                <p className='font-loopless font-normal text-neutral-500'>{author.description}</p>
+                <Link to='/about'>
+                    <p className='font-loopless font-normal text-neutral-500'>{author.description}</p>
+                </Link>
             </div>
         </section>
     )
