@@ -4,8 +4,6 @@
 
 Made with Gatsby, TailwindCSS, and connected to Strapi backend. Deployed at https://blog.nattp.page/
 
-Read about the making of the blog in this post: <TBA>
-
 ![natTPlanding illustration](src/assets/hero-art/chara.png)
 
 Backend (CMS) repo: https://github.com/natTP/natTP-blog-backend
