@@ -184,11 +184,7 @@ export const query = graphql`
                     ... on STRAPI__COMPONENT_SHARED_RICH_TEXT {
                         childStrapiComponentSharedRichTextBodyTextnode {
                             childMarkdownRemark {
-                                fields {
-                                    readingTime {
-                                        minutes
-                                    }
-                                }
+                                rawMarkdownBody
                             }
                         }
                     }

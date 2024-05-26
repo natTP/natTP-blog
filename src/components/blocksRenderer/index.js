@@ -51,15 +51,11 @@ export const query = graphql`
             childStrapiComponentSharedRichTextBodyTextnode {
                 childMarkdownRemark {
                     html
+                    rawMarkdownBody
                     headings {
                         depth
                         id
                         value
-                    }
-                    fields {
-                        readingTime {
-                            minutes
-                        }
                     }
                 }
             }
