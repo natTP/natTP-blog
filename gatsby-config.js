@@ -126,6 +126,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-plausible`,
+      options: {
+        domain: `blog.nattp.page`,
+      },
+    },
+    {
       resolve: `gatsby-source-strapi`,
       options: {
         apiURL: process.env.STRAPI_API_URL || "http://localhost:8082",
