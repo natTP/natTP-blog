@@ -1,5 +1,7 @@
 import React from 'react'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
 function BlockMedia({ data }) {
     const isVideo = data.file.mime.startsWith('video')
@@ -9,11 +11,13 @@ function BlockMedia({ data }) {
             {isVideo ? (
                 <p>ยังไม่สามารถแสดงผลวิดิโอได้</p>
             ) : (
-                <GatsbyImage
-                    image={getImage(data.file.localFile)}
-                    alt={data.file.alternativeText}
-                    className='rounded'
-                />
+                <Zoom>
+                    <GatsbyImage
+                        image={getImage(data.file.localFile)}
+                        alt={data.file.alternativeText}
+                        className='rounded'
+                    />
+                </Zoom>
             )}
             <figcaption className='font-looped text-sm tracking-wide text-neutral-500 text-center'>
                 {data.caption}
