@@ -3,6 +3,7 @@ require("dotenv").config({
 });
 
 module.exports = {
+  trailingSlash: "always",
   siteMetadata: {
     siteUrl: `https://blog.nattp.page/`,
   },
