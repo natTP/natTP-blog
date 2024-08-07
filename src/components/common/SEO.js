@@ -32,7 +32,11 @@ function SEO({ title, description, image, pathname, children }) {
         <>
             <title>{seo.title}</title>
             <meta name='description' content={seo.description} />
-            <meta name='image' content={seo.image} />
+            <meta property='og:image' content={seo.image} />
+            <meta property='og:image:type' content='image/jpeg' />
+            <meta property='og:image:width' content='1200' />
+            <meta property='og:image:height' content='630' />
+
             <meta name='twitter:card' content='summary_large_image' />
             <meta name='twitter:title' content={seo.title} />
             <meta name='twitter:url' content={seo.url} />
