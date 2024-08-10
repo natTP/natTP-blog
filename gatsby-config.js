@@ -96,9 +96,6 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-reading-time`,
-          },
-          {
             resolve: `gatsby-remark-external-links`,
             options: {
               target: "_blank",
