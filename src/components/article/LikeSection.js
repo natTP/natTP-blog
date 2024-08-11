@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { ClapButton } from '@lyket/react'
 import Button from 'components/common/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart as faHeartFilled } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as faHeartBordered } from '@fortawesome/free-regular-svg-icons'
-import { faEye } from '@fortawesome/free-regular-svg-icons'
 import Thanks from 'assets/nat.svg'
 
 function LikeSection({ className, articleId }) {
@@ -38,12 +37,10 @@ function LikeSection({ className, articleId }) {
                                 {userClaps > 0 ? '' : 'อย่าลืมกดไลก์เป็นกำลังใจให้ผู้เขียนด้วยนะ'}
                             </div>
                         </span>
-                        <Thanks
-                            className='absolute opacity-0 fill-amethyst-300 -top-4 xs:-top-12 -right-6 w-16 
-                            group-active:opacity-100 group-active:-translate-y-3 transition-all ease-out duration-300'
-                        />
+
                         <Button
                             bordered
+                            className='peer'
                             icon={{
                                 icon: userClaps > 0 ? faHeartFilled : faHeartBordered,
                                 color: 'text-rhodonite-500',
@@ -53,6 +50,10 @@ function LikeSection({ className, articleId }) {
                         >
                             {userClaps > 0 ? `Like again!` : 'Like!'}
                         </Button>
+                        <Thanks
+                            className='absolute opacity-0 fill-amethyst-300 -top-4 xs:-top-12 -right-6 w-16 
+                            peer-active:opacity-100 peer-active:-translate-y-3 transition-all ease-out duration-300'
+                        />
                     </span>
                 </div>
             )}
