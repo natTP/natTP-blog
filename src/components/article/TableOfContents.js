@@ -13,7 +13,8 @@ function TableOfContents({ blocks, expandable, hidden = false, className }) {
     blocks.forEach((block) => {
         if (block.__typename === 'STRAPI__COMPONENT_SHARED_RICH_TEXT') {
             const headings = block.childStrapiComponentSharedRichTextBodyTextnode.childMarkdownRemark.headings
-            contents.push(...headings)
+            const filteredContents = headings.filter((item) => item.depth <= 3)
+            contents.push(...filteredContents)
         }
     })
 
@@ -24,13 +25,13 @@ function TableOfContents({ blocks, expandable, hidden = false, className }) {
             case 3:
                 return 'my-1 ml-8'
             case 4:
-                return 'my-1 ml-12'
+            // return 'my-1 ml-12'
             case 5:
-                return 'my-1 ml-16'
+            // return 'my-1 ml-16'
             case 6:
-                return 'my-1 ml-20'
+            // return 'my-1 ml-20'
             default:
-                return ''
+                return 'hidden'
         }
     }
 
@@ -39,7 +40,7 @@ function TableOfContents({ blocks, expandable, hidden = false, className }) {
 
     return (
         <nav
-            className={`${hidden ? 'hidden' : ''} h-fit max-h-screen my-4 ${className} ${
+            className={`${hidden ? 'hidden' : ''} h-fit my-4 ${className} ${
                 expandable ? '' : 'overflow-auto'
             } row-span-1`}
         >
@@ -60,7 +61,7 @@ function TableOfContents({ blocks, expandable, hidden = false, className }) {
                 className={`font-loopless font-medium text-body tracking-wide 
                     ${
                         isExpanded ? 'max-h-[4048px]' : 'max-h-0'
-                    } overflow-hidden transition-[max-height] ease-in-out duration-1000`}
+                    } overflow-hidden transition-[max-height] ease-in-out duration-500`}
             >
                 {contents.map((item) => (
                     <li
