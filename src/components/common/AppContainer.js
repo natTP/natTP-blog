@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 
 function AppContainer({ className, children }) {
     return (
-        <div className={`w-screen min-h-screen relative overflow-x-clip bg-white ${className}`}>
+        <div className={`w-screen min-h-dvh relative overflow-x-clip bg-white ${className}`}>
             <Navbar />
             <div
                 className='m-auto pt-4 md:pt-12 pb-[220px] px-5 md:px-[72px] 2xl:max-w-[1392px]
