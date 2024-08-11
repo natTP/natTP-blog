@@ -6,7 +6,7 @@ let filePath = "*.{png,jpg,jpeg}";
 if (process.argv.length > 2) filePath = process.argv[2] + filePath;
 
 const matches = glob.sync(filePath);
-const MAX_WIDTH = 1800;
+const MAX_WIDTH = 1392 * 2;
 const QUALITY = 80;
 
 console.log(`optimizing files at ${filePath}`);
