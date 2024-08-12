@@ -16,6 +16,7 @@ function DropdownMenu({ className, setIsDropdownOpen, setIsMenuOpen }) {
     `)
 
     const categories = categoriesQuery.allStrapiColumn.nodes
+    console.log(categories)
 
     return (
         <ul
