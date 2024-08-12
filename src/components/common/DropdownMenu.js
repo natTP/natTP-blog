@@ -10,13 +10,15 @@ function DropdownMenu({ className, setIsDropdownOpen, setIsMenuOpen }) {
                     id
                     slug
                     tagline
+                    order
                 }
             }
         }
     `)
 
-    const categories = categoriesQuery.allStrapiColumn.nodes
-    console.log(categories)
+    const categories = categoriesQuery.allStrapiColumn.nodes.toSorted((a, b) => {
+        return a.order - b.order
+    })
 
     return (
         <ul

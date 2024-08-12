@@ -45,7 +45,11 @@ function ColumnSection({ column }) {
 function Home({ data }) {
     const tags = data.allStrapiTag.nodes
     const featuredArticles = data.allStrapiFeatured.nodes[0].articles
-    const columns = data.allStrapiColumn.nodes
+    const columns = data.allStrapiColumn.nodes.toSorted((a, b) => {
+        return a.order - b.order
+    })
+
+    console.log(columns)
 
     const [tagIdx, setTagIdx] = useState(getRandInt(0, tags.length - 1))
     // const prevTagIdx = usePrevious(tagIdx)
@@ -173,6 +177,7 @@ export const query = graphql`
             nodes {
                 id
                 slug
+                order
                 title
                 tagline
                 description
