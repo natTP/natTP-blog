@@ -4,9 +4,9 @@ import { faQuoteLeft, faQuoteRight } from '@fortawesome/free-solid-svg-icons'
 
 function BlockQuote({ data }) {
     return (
-        <blockquote className='group pt-10 flex flex-col gap-4 items-center'>
+        <blockquote className='group pt-10 pb-1 flex flex-col gap-4 items-center'>
             <p
-                className='w-fit mx-14 xs:mx-20 relative font-decorative text-sm md:text-lg tracking-wide text-amethyst-500 
+                className='w-fit mx-14 xs:mx-20 mb-7 relative font-decorative text-lg md:text-xl tracking-wide text-amethyst-500 
                     text-center whitespace-pre-wrap'
             >
                 <FontAwesomeIcon
