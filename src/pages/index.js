@@ -49,8 +49,6 @@ function Home({ data }) {
         return a.order - b.order
     })
 
-    console.log(columns)
-
     const [tagIdx, setTagIdx] = useState(getRandInt(0, tags.length - 1))
     // const prevTagIdx = usePrevious(tagIdx)
 
