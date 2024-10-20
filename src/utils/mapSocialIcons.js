@@ -1,4 +1,4 @@
-import { faFacebookF, faTwitter, faInstagram, faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons'
+import { faFacebookF, faTwitter, faBluesky, faInstagram, faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
 export const socialIcons = {
     facebook: faFacebookF,
