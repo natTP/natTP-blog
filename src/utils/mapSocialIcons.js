@@ -3,6 +3,7 @@ import { faFacebookF, faTwitter, faInstagram, faGithub, faYoutube } from '@forta
 export const socialIcons = {
     facebook: faFacebookF,
     twitter: faTwitter,
+    bluesky: faBluesky,
     instagram: faInstagram,
     youtube: faYoutube,
     github: faGithub,
