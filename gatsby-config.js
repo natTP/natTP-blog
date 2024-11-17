@@ -5,7 +5,10 @@ require("dotenv").config({
 module.exports = {
   trailingSlash: "always",
   siteMetadata: {
+    title: "natTP Blog",
     siteUrl: `https://blog.nattp.page/`,
+    description:
+      "วาด เขียน โค้ด บทความจากปลายปากกาของนักเขียนผู้หลงใหลในวิทย์และสุนทรีย์",
   },
   plugins: [
     {
@@ -69,6 +72,54 @@ module.exports = {
             lastmod: date,
           };
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            title: "natTP Blog RSS Feed",
+            output: "/rss.xml",
+            serialize: ({ query: { site, allStrapiArticle } }) => {
+              return allStrapiArticle.edges.map((edge) => {
+                return {
+                  title: edge.node.title,
+                  date: edge.node.publishedAt,
+                  url: site.siteMetadata.siteUrl + "/article/" + edge.node.slug,
+                  guid:
+                    site.siteMetadata.siteUrl + "/article/" + edge.node.slug,
+                };
+              });
+            },
+            query: `
+              {
+                allStrapiArticle(sort: {fields: publishedAt, order: DESC}) {
+                  edges {
+                    node {
+                      slug
+                      title
+                      publishedAt
+                    }
+                  }
+                }
+              }
+            `,
+          },
+        ],
       },
     },
     {
