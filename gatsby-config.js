@@ -6,7 +6,7 @@ module.exports = {
   trailingSlash: "always",
   siteMetadata: {
     title: "natTP Blog",
-    siteUrl: `https://blog.nattp.page/`,
+    siteUrl: `https://blog.nattp.page`,
     description:
       "วาด เขียน โค้ด บทความจากปลายปากกาของนักเขียนผู้หลงใหลในวิทย์และสุนทรีย์",
   },
@@ -72,6 +72,14 @@ module.exports = {
             lastmod: date,
           };
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: "https://blog.nattp.page",
+        sitemap: "https://blog.nattp.page/sitemap-index.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
       },
     },
     {
