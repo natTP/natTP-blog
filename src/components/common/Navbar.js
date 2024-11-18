@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faMinus, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import Logo from 'assets/logo/logo-official-color.svg'
+import Webring from 'assets/webring.svg'
 import Socials from './Socials'
 import DropdownMenu from './DropdownMenu'
 import ReadingProgress from 'components/article/ReadingProgress'
@@ -30,15 +31,21 @@ function Navbar() {
     ]
 
     return (
-        <header className=' bg-neutral-100 sticky top-0 z-50'>
+        <header className='bg-neutral-100 sticky top-0 z-50'>
             <div
                 className='px-5 md:px-[72px] py-2 2xl:max-w-[1392px] m-auto 
                 flex flex-row justify-between items-center flex-wrap'
             >
-                <Link to='/' className='flex flex-row items-center gap-0.5'>
-                    <Logo className='w-16 h-9' alt='natTP logo' />
-                    <span className='font-decorative text-neutral-300'>Blog</span>
-                </Link>
+                <span className='flex gap-4 items-center'>
+                    <Link to='/' className='flex flex-row items-center gap-0.5'>
+                        <Logo className='w-16 h-9' alt='natTP logo' />
+                        <span className='font-decorative text-neutral-300'>Blog</span>
+                    </Link>
+                    <a href='https://webring.wonderful.software#blog.nattp.page' title='วงแหวนเว็บ'>
+                        <Webring className='w-6 h-6' alt='วงแหวนเว็บ' />
+                    </a>
+                </span>
+
                 <FontAwesomeIcon
                     icon={isMenuOpen ? faMinus : faBars}
                     className='block md:invisible text-neutral-500 cursor-pointer hover:text-neutral-700'
