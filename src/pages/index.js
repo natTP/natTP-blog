@@ -5,9 +5,11 @@ import Arrow from 'assets/arrow.svg'
 import ArticleCard from 'components/card/ArticleCard'
 import ClickableColumnName from 'components/article/ClickableColumnName'
 import SEO from 'components/common/SEO'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { getRandInt } from 'utils/randUtils'
 import { stringToSlug } from 'utils/slugUtils'
 import LandingArt from 'components/art/LandingArt'
+import Button from 'components/common/Button'
 // import usePrevious from 'hooks/usePrevious'
 
 function TagDisplay({ tag }) {
@@ -33,7 +35,11 @@ function ColumnSection({ column }) {
                 <div className='mt-1 font-loopless font-medium text-base text-gradient opacity-70'>
                     {column.tagline}
                 </div>
-                <p className='mt-4 font-loopless font-regular text-body text-neutral-700'>{column.description}</p>
+                <p className='my-4 font-loopless font-regular text-body text-neutral-700'>{column.description}</p>
+                <Link to={`/column/${column.slug}`} className='group font-loopless text-amethyst-500 opacity-70'>
+                    <span className='underline-gradient group-focus:text-amethyst-700'>บทความทั้งหมด</span>
+                    <Arrow className='inline w-4 ml-2 fill-amethyst-500 group-focus:fill-amethyst-700' />
+                </Link>
             </div>
             {articles.map((article) => (
                 <ArticleCard key={article.id} article={article} className='col-span-2' />
