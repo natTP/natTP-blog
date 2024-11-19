@@ -1,3 +1,3 @@
 module.exports = {
-    stringToSlug: (str) => str.replace(' ', '-').toLowerCase(),
+    stringToSlug: (str) => str.replaceAll(' ', '-').toLowerCase(),
 }
