@@ -78,5 +78,5 @@ export const query = graphql`
 export default Tag
 
 export const Head = ({ data }) => (
-    <SEO title={`บทความที่มีแท็ก ${data.strapiTag.title}`} pathname={`/tag/${stringToSlug(data.strapiTag.title)}`} />
+    <SEO title={`บทความที่มีแท็ก ${data.strapiTag.title}`} pathname={`/tag/${stringToSlug(data.strapiTag.title)}/`} />
 )

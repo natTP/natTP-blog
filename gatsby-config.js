@@ -113,9 +113,8 @@ module.exports = {
                 return {
                   title: edge.node.title,
                   date: edge.node.publishedAt,
-                  url: site.siteMetadata.siteUrl + "/article/" + edge.node.slug,
-                  guid:
-                    site.siteMetadata.siteUrl + "/article/" + edge.node.slug,
+                  url: `${site.siteMetadata.siteUrl}/article/${edge.node.slug}/`,
+                  guid: `${site.siteMetadata.siteUrl}/article/${edge.node.slug}/`,
                 };
               });
             },
