@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
-function SEO({ title, description, image, pathname, children }) {
+function SEO({ title, description, image, pathname, children, isArticle = false }) {
     const { strapiGlobal } = useStaticQuery(graphql`
         query {
             strapiGlobal {
@@ -32,6 +32,12 @@ function SEO({ title, description, image, pathname, children }) {
         <>
             <title>{seo.title}</title>
             <meta name='description' content={seo.description} />
+
+            <meta property='og:title' content={title || strapiGlobal.siteName} />
+            <meta property='og:description' content={seo.description} />
+            <meta property='og:type' content={isArticle ? 'article' : 'website'} />
+            <meta property='og:url' content={seo.url} />
+
             <meta property='og:image' content={seo.image} />
             <meta property='og:image:type' content='image/jpeg' />
             <meta property='og:image:width' content='1200' />

@@ -209,5 +209,7 @@ export const Head = ({ data }) => (
         title={data.strapiArticle.title}
         description={data.strapiArticle.seo.metaDescription}
         image={data.strapiArticle.cover.localFile.url}
+        pathname={`/article/${data.strapiArticle.slug}`}
+        isArticle
     />
 )

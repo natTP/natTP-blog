@@ -59,6 +59,7 @@ export const query = graphql`
             title
             tagline
             description
+            slug
         }
         allStrapiArticle(
             filter: { column: { id: { eq: $id } } }
@@ -104,5 +105,6 @@ export const Head = ({ data }) => (
     <SEO
         title={`${data.strapiColumn.title} ${data.strapiColumn.tagline}`}
         description={data.strapiColumn.description}
+        pathname={`/column/${data.strapiColumn.slug}`}
     />
 )
