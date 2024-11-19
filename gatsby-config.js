@@ -140,7 +140,7 @@ module.exports = {
       resolve: `gatsby-plugin-page-creator`,
       options: {
         path: `${__dirname}/src/pages`,
-        ignore: [`tag/tagTemplate.js`],
+        ignore: [`tag/tagTemplate.js`, `column/columnTemplate.js`],
       },
     },
     {
