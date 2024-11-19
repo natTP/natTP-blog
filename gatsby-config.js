@@ -79,7 +79,13 @@ module.exports = {
       options: {
         host: "https://blog.nattp.page",
         sitemap: "https://blog.nattp.page/sitemap-index.xml",
-        policy: [{ userAgent: "*", allow: "/" }],
+        policy: [
+          {
+            userAgent: "*",
+            allow: "/",
+            disallow: ["/2019", "/2020"],
+          },
+        ],
       },
     },
     {
