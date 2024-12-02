@@ -86,4 +86,4 @@ export const query = graphql`
 
 export default About
 
-export const Head = ({ data }) => <SEO title={data.strapiAbout.seo.metaTitle} pathname='/about' />
+export const Head = ({ data }) => <SEO title={data.strapiAbout.seo.metaTitle} pathname='/about/' />

@@ -216,4 +216,4 @@ export const query = graphql`
 
 export default Home
 
-export const Head = () => <SEO />
+export const Head = () => <SEO pathname='/' />
