@@ -1,0 +1,4 @@
+[build.environment]
+  # Netlify's build image ships a system libvips without an AVIF encoder.
+  # Make sharp use its bundled libvips instead so gatsby-plugin-image can output AVIF.
+  SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
