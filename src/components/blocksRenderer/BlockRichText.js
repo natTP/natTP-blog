@@ -3,7 +3,7 @@ import parse from 'html-react-parser'
 import { sanitize } from 'isomorphic-dompurify'
 
 function BlockRichText({ data }) {
-    const htmlFromCMS = data.childStrapiComponentSharedRichTextBodyTextnode.childMarkdownRemark.html
+    const htmlFromCMS = data.richTextBody.data.childMarkdownRemark.html
 
     const sanitizeHtml = (htmlString) => {
         const cleanHtmlString = sanitize(htmlString, { USE_PROFILES: { html: true }, ADD_ATTR: ['target'] })

@@ -12,7 +12,7 @@ function TableOfContents({ blocks, expandable, hidden = false, className }) {
 
     blocks.forEach((block) => {
         if (block.__typename === 'STRAPI__COMPONENT_SHARED_RICH_TEXT') {
-            const headings = block.childStrapiComponentSharedRichTextBodyTextnode.childMarkdownRemark.headings
+            const headings = block.richTextBody.data.childMarkdownRemark.headings
             const filteredContents = headings.filter((item) => item.depth <= 3)
             contents.push(...filteredContents)
         }

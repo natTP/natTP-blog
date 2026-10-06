@@ -120,7 +120,7 @@ module.exports = {
             },
             query: `
               {
-                allStrapiArticle(sort: {fields: publishedAt, order: DESC}) {
+                allStrapiArticle(sort: {publishedAt: DESC}) {
                   edges {
                     node {
                       slug

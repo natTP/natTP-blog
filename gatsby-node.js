@@ -44,87 +44,91 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const columns = result.data.allStrapiColumn.nodes;
 
   if (tags.length > 0) {
-    tags.forEach(async (tag) => {
-      const articles = await graphql(
-        `
-          query ($id: String) {
-            allStrapiArticle(
-              filter: { tags: { elemMatch: { id: { eq: $id } } } }
-              sort: { fields: publishedAt, order: DESC }
-            ) {
-              nodes {
-                id
-                title
-                slug
+    await Promise.all(
+      tags.map(async (tag) => {
+        const articles = await graphql(
+          `
+            query ($id: String) {
+              allStrapiArticle(
+                filter: { tags: { elemMatch: { id: { eq: $id } } } }
+                sort: { publishedAt: DESC }
+              ) {
+                nodes {
+                  id
+                  title
+                  slug
+                }
               }
             }
-          }
-        `,
-        { id: tag.id }
-      );
-
-      if (result.errors) {
-        reporter.panicOnBuild(
-          `Error while running GraphQL query.`,
-          result.errors
+          `,
+          { id: tag.id }
         );
-        return;
-      }
 
-      paginate({
-        createPage,
-        items: articles.data.allStrapiArticle.nodes,
-        itemsPerPage: 9,
-        pathPrefix: `/tag/${stringToSlug(tag.title)}`,
-        component: tagTemplate,
-        context: {
-          id: tag.id,
+        if (result.errors) {
+          reporter.panicOnBuild(
+            `Error while running GraphQL query.`,
+            result.errors
+          );
+          return;
+        }
+
+        paginate({
+          createPage,
+          items: articles.data.allStrapiArticle.nodes,
+          itemsPerPage: 9,
           pathPrefix: `/tag/${stringToSlug(tag.title)}`,
-        },
-      });
-    });
+          component: tagTemplate,
+          context: {
+            id: tag.id,
+            pathPrefix: `/tag/${stringToSlug(tag.title)}`,
+          },
+        });
+      })
+    );
   }
 
   if (columns.length > 0) {
-    columns.forEach(async (column) => {
-      const articles = await graphql(
-        `
-          query ($id: String) {
-            allStrapiArticle(
-              filter: { column: { id: { eq: $id } } }
-              sort: { fields: publishedAt, order: DESC }
-            ) {
-              nodes {
-                id
-                title
-                slug
+    await Promise.all(
+      columns.map(async (column) => {
+        const articles = await graphql(
+          `
+            query ($id: String) {
+              allStrapiArticle(
+                filter: { column: { id: { eq: $id } } }
+                sort: { publishedAt: DESC }
+              ) {
+                nodes {
+                  id
+                  title
+                  slug
+                }
               }
             }
-          }
-        `,
-        { id: column.id }
-      );
-
-      if (result.errors) {
-        reporter.panicOnBuild(
-          `Error while running GraphQL query.`,
-          result.errors
+          `,
+          { id: column.id }
         );
-        return;
-      }
 
-      paginate({
-        createPage,
-        items: articles.data.allStrapiArticle.nodes,
-        itemsPerPage: 9,
-        pathPrefix: `/column/${column.slug}`,
-        component: columnTemplate,
-        context: {
-          id: column.id,
+        if (result.errors) {
+          reporter.panicOnBuild(
+            `Error while running GraphQL query.`,
+            result.errors
+          );
+          return;
+        }
+
+        paginate({
+          createPage,
+          items: articles.data.allStrapiArticle.nodes,
+          itemsPerPage: 9,
           pathPrefix: `/column/${column.slug}`,
-        },
-      });
-    });
+          component: columnTemplate,
+          context: {
+            id: column.id,
+            pathPrefix: `/column/${column.slug}`,
+          },
+        });
+      })
+    );
   }
 };
 
@@ -132,10 +136,13 @@ exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
     type STRAPI__COMPONENT_SHARED_RICH_TEXT implements Node {
-      childStrapiComponentSharedRichTextBodyTextnode : TempMarkdownRemark 
+      body: StrapiRichTextBody
     }
-    type TempMarkdownRemark {
-      childMarkdownRemark: MarkdownRemark
+    type StrapiRichTextBody {
+      data: STRAPI__COMPONENT_SHARED_RICH_TEXT_BODY_TEXTNODE @link(by: "id", from: "data___NODE")
+    }
+    type STRAPI__COMPONENT_SHARED_RICH_TEXT_BODY_TEXTNODE implements Node {
+      body: String
     }
 
     type STRAPI__COMPONENT_SHARED_MEDIA implements Node {
