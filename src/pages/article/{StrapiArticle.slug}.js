@@ -169,7 +169,7 @@ export const query = graphql`
                 metaDescription
             }
         }
-        allStrapiArticle(limit: 10, sort: { fields: publishedAt, order: DESC }) {
+        allStrapiArticle(limit: 10, sort: { publishedAt: DESC }) {
             nodes {
                 id
                 title
@@ -182,9 +182,11 @@ export const query = graphql`
                 blocks {
                     __typename
                     ... on STRAPI__COMPONENT_SHARED_RICH_TEXT {
-                        childStrapiComponentSharedRichTextBodyTextnode {
-                            childMarkdownRemark {
-                                rawMarkdownBody
+                        richTextBody: body {
+                            data {
+                                childMarkdownRemark {
+                                    rawMarkdownBody
+                                }
                             }
                         }
                     }

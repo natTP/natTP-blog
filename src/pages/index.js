@@ -159,9 +159,11 @@ export const query = graphql`
                     blocks {
                         __typename
                         ... on STRAPI__COMPONENT_SHARED_RICH_TEXT {
-                            childStrapiComponentSharedRichTextBodyTextnode {
-                                childMarkdownRemark {
-                                    rawMarkdownBody
+                            richTextBody: body {
+                                data {
+                                    childMarkdownRemark {
+                                        rawMarkdownBody
+                                    }
                                 }
                             }
                         }
@@ -177,7 +179,7 @@ export const query = graphql`
                 }
             }
         }
-        allStrapiColumn(sort: { fields: publishedAt, order: ASC }) {
+        allStrapiColumn(sort: { publishedAt: ASC }) {
             nodes {
                 id
                 slug
@@ -193,9 +195,11 @@ export const query = graphql`
                     blocks {
                         __typename
                         ... on STRAPI__COMPONENT_SHARED_RICH_TEXT {
-                            childStrapiComponentSharedRichTextBodyTextnode {
-                                childMarkdownRemark {
-                                    rawMarkdownBody
+                            richTextBody: body {
+                                data {
+                                    childMarkdownRemark {
+                                        rawMarkdownBody
+                                    }
                                 }
                             }
                         }

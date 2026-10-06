@@ -8,7 +8,7 @@ export const calculateTotalReadTime = (blocks) => {
 
     blocks.forEach((block) => {
         if (block.__typename === 'STRAPI__COMPONENT_SHARED_RICH_TEXT') {
-            const text = block.childStrapiComponentSharedRichTextBodyTextnode.childMarkdownRemark.rawMarkdownBody
+            const text = block.richTextBody.data.childMarkdownRemark.rawMarkdownBody
             if (text) {
                 const readTime = text.length / CHAR_PER_WORD / WORD_PER_MIN
                 totalReadTime += readTime

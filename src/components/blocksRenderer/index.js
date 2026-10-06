@@ -48,14 +48,16 @@ export const query = graphql`
     fragment Blocks on STRAPI__COMPONENT_SHARED_EMBEDDED_VIDEOSTRAPI__COMPONENT_SHARED_MEDIASTRAPI__COMPONENT_SHARED_QUOTESTRAPI__COMPONENT_SHARED_RICH_TEXTUnion {
         __typename
         ... on STRAPI__COMPONENT_SHARED_RICH_TEXT {
-            childStrapiComponentSharedRichTextBodyTextnode {
-                childMarkdownRemark {
-                    html
-                    rawMarkdownBody
-                    headings {
-                        depth
-                        id
-                        value
+            richTextBody: body {
+                data {
+                    childMarkdownRemark {
+                        html
+                        rawMarkdownBody
+                        headings {
+                            depth
+                            id
+                            value
+                        }
                     }
                 }
             }

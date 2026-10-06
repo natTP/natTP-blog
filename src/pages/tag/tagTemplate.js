@@ -39,7 +39,7 @@ export const query = graphql`
         }
         allStrapiArticle(
             filter: { tags: { elemMatch: { id: { eq: $id } } } }
-            sort: { fields: publishedAt, order: DESC }
+            sort: { publishedAt: DESC }
             skip: $skip
             limit: $limit
         ) {
@@ -55,9 +55,11 @@ export const query = graphql`
                 blocks {
                     __typename
                     ... on STRAPI__COMPONENT_SHARED_RICH_TEXT {
-                        childStrapiComponentSharedRichTextBodyTextnode {
-                            childMarkdownRemark {
-                                rawMarkdownBody
+                        richTextBody: body {
+                            data {
+                                childMarkdownRemark {
+                                    rawMarkdownBody
+                                }
                             }
                         }
                     }
